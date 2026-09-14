@@ -21,9 +21,9 @@ const dancingScript = Dancing_Script({
   display: "swap",
 });
 
-const siteUrl = "https://shivanthi.design";
+const siteUrl = "https://shivanthi.space";
 const description =
-  "Shivanthi Fernando helps SaaS & AI startups design conversion-driven, user-friendly products — clean, scalable UIs with Figma-to-code delivery that ships fast.";
+  "Shivanthi Fernando is a UX Designer turning ideas into experiences that feel natural to use — thoughtful UI design, rapid prototyping, and Figma-to-code delivery for SaaS & AI products.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
