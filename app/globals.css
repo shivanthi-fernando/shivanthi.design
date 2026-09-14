@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ *  Design tokens — soft pastel theme on a warm-white paper base
+ * ------------------------------------------------------------------ */
+@theme {
+  /* Surfaces & ink — black/gray ink on a warm-white paper base */
+  --color-paper: #fbfaf7;
+  --color-paper-2: #f3f0f9;
+  --color-card: #ffffff;
+  --color-ink: #1c1c1e;
+  --color-ink-soft: #52525b;
+  --color-muted: #7a7a82;
+  --color-line: #e9e4f2;
+  --color-line-strong: #d8d1ea;
+
+  /* Primary action color (sampled from brand reference) */
+  --color-primary: #8f7fc4;
+  --color-primary-hover: #796ba6;
+
+  /* Pastel swatches (soft fills) */
+  --color-butter: #fbeab4;
+  --color-butter-ink: #7a5c00;
+  --color-mint: #cbe9d2;
+  --color-mint-ink: #1f6b46;
+  --color-lavender: #e3daf9;
+  --color-lavender-ink: #5a45a8;
+  --color-peach: #fbd9c5;
+  --color-peach-ink: #a1522b;
+  --color-sky: #d2e6fb;
+  --color-sky-ink: #2f5f9e;
+  --color-blush: #f9d3e0;
+  --color-blush-ink: #a63d68;
+
+  /* Fonts (wired to next/font variables in layout.tsx) — Inter everywhere
+     except the navbar wordmark, which keeps the handwritten script. */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-label: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-script), "Segoe Script", cursive;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------------------------------------------ *
+ *  Base
+ * ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-butter);
+    color: var(--color-ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ *  Reusable utilities
+ * ------------------------------------------------------------------ */
+
+/* Pastel highlight chip used inline in copy */
+.hl {
+  border-radius: 0.4em;
+  padding: 0.06em 0.32em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Scroll-reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s var(--ease-out-soft),
+    transform 0.7s var(--ease-out-soft);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .float-y {
+    animation: none !important;
+  }
+}
+
+/* Gentle float for hero mockups */
+.float-y {
+  animation: floaty 7s ease-in-out infinite;
+}
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Availability dot pulse */
+.pulse-dot {
+  position: relative;
+}
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.5;
+  animation: pulsering 2.2s ease-out infinite;
+}
+@keyframes pulsering {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
