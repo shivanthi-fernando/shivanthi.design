@@ -32,9 +32,8 @@ const caseStudies: {
 
 export default function CaseStudies() {
   return (
-    <div className="mt-16">
-      <h3 className="font-display text-xl font-semibold text-ink">Case Studies</h3>
-      <p className="mt-1.5 max-w-2xl text-lg leading-relaxed text-muted">
+    <div>
+      <p className="max-w-2xl text-lg leading-relaxed text-muted">
         Some of the work shown here has been renamed or lightly altered due
         to client confidentiality. The thinking, process and quality behind
         it remain exactly as delivered.

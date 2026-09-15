@@ -1,5 +1,4 @@
 import { SectionHead } from "./ui";
-import DesignShots from "./DesignShots";
 import OtherExplorations from "./OtherExplorations";
 import ProjectsTabs from "./ProjectsTabs";
 import CaseStudies from "./CaseStudies";
@@ -15,11 +14,9 @@ export default async function Work() {
         />
 
         <ProjectsTabs
-          designProjects={<DesignShots />}
+          designProjects={<CaseStudies />}
           otherExplorations={<OtherExplorations />}
         />
-
-        <CaseStudies />
       </div>
     </section>
   );
