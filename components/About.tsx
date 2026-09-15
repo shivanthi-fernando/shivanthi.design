@@ -4,12 +4,12 @@ import { SectionHead } from "./ui";
 import Reveal from "./Reveal";
 import PolaroidGallery from "./PolaroidGallery";
 
-export default async function About() {
+export default async function About({ compact = false }: { compact?: boolean }) {
   const communityPhotos = await getFolderPhotos("community-learning");
   const exploringPhotos = await getFolderPhotos("always-exploring");
 
   return (
-    <section className="pb-20 pt-28 sm:pb-28 sm:pt-32 md:pt-36">
+    <section className={compact ? "pb-20 pt-4 sm:pb-28 sm:pt-6" : "pb-20 pt-28 sm:pb-28 sm:pt-32 md:pt-36"}>
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
         <SectionHead label="About" title="About me" />
 
