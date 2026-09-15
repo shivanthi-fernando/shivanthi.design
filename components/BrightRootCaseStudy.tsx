@@ -38,7 +38,7 @@ export default function BrightRootCaseStudy() {
           <SectionHead
             label="BrightRoot"
             title="BrightRoot"
-            intro="Designing an institute platform and student exam experience. BrightRoot connects institutes with students through public institute pages, student assessments, and administrative tools — this project covered the first-phase public experience, a student exam portal, and an admin workspace for managing questions and exams."
+            intro="Designing an institute platform and student exam experience. BrightRoot connects institutes with students through public institute pages, student assessments, and administrative tools."
           />
         </div>
 

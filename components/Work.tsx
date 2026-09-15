@@ -1,7 +1,7 @@
 import { SectionHead } from "./ui";
-// DesignShots hidden for now — re-enable by restoring the import and
-// the <DesignShots /> render below.
-// import DesignShots from "./DesignShots";
+import DesignShots from "./DesignShots";
+import OtherExplorations from "./OtherExplorations";
+import ProjectsTabs from "./ProjectsTabs";
 import CaseStudies from "./CaseStudies";
 
 export default async function Work() {
@@ -12,6 +12,11 @@ export default async function Work() {
           label="Work"
           title="Selected work, up close."
           intro="A look at my design work, from interface explorations to full case studies covering how I approach research, decisions and outcomes."
+        />
+
+        <ProjectsTabs
+          designProjects={<DesignShots />}
+          otherExplorations={<OtherExplorations />}
         />
 
         <CaseStudies />
