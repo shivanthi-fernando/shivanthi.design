@@ -22,10 +22,11 @@ const caseStudies: {
     href: "/projects/mosaic",
   },
   {
-    title: "Next Case Study",
-    teaser: "Another project write-up is in progress — check back soon.",
+    title: "BrightRoot",
+    teaser:
+      "Designing an institute platform's public pages, student exam portal, and admin workspace.",
     image: null,
-    href: null,
+    href: "/projects/brightroot",
   },
 ];
 

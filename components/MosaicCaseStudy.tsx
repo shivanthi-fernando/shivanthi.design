@@ -1,45 +1,14 @@
 import Link from "next/link";
 import { SectionHead } from "./ui";
-import { ArrowRight, ImageIcon } from "./icons";
+import { ArrowRight } from "./icons";
 import Reveal from "./Reveal";
-
-/**
- * A dashed-border slot marking where a real screenshot goes once it's
- * ready to share — keeps the case study's structure/captions in place
- * without blocking on assets that don't exist yet. Drop a real <Image>
- * in here and delete the placeholder when the screenshot is available.
- */
-function ImageSlot({ caption }: { caption: string }) {
-  return (
-    <figure className="mt-8">
-      <div className="flex aspect-[16/10] flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line-strong bg-card p-6 text-center text-muted">
-        <ImageIcon className="h-8 w-8" />
-        <span className="text-sm">Image coming soon</span>
-      </div>
-      <figcaption className="mt-3 text-sm italic leading-relaxed text-muted">
-        {caption}
-      </figcaption>
-    </figure>
-  );
-}
-
-function H2({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="mt-14 font-display text-2xl font-semibold text-ink sm:text-[1.75rem]">
-      {children}
-    </h2>
-  );
-}
-
-function H3({ children }: { children: React.ReactNode }) {
-  return (
-    <h3 className="mt-8 font-display text-lg font-semibold text-ink">{children}</h3>
-  );
-}
-
-function P({ children }: { children: React.ReactNode }) {
-  return <p className="mt-4 text-lg leading-relaxed text-muted">{children}</p>;
-}
+import {
+  CaseStudyH2 as H2,
+  CaseStudyH3 as H3,
+  CaseStudyP as P,
+  CaseStudyList,
+  CaseStudyImageSlot as ImageSlot,
+} from "./case-study-ui";
 
 const palette = [
   { role: "Primary", hex: "#C9BEFB" },
@@ -153,7 +122,7 @@ export default function MosaicCaseStudy() {
           </P>
 
           <H3>Establishing a Cohesive Visual Language</H3>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-lg leading-relaxed text-muted">
+          <CaseStudyList>
             <li>Defining a clear primary and secondary color palette.</li>
             <li>
               Establishing relevant color shades and assigning them to
@@ -166,7 +135,7 @@ export default function MosaicCaseStudy() {
               Building a foundation that could support the redesign of the
               remaining screens.
             </li>
-          </ul>
+          </CaseStudyList>
 
           <H3>Color Palette</H3>
           <P>
