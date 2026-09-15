@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Reveal from "./Reveal";
-import { InfoIcon, ImageIcon } from "./icons";
+import { ImageIcon } from "./icons";
 
 /**
  * Case Studies — cards for full write-ups that aren't live yet: a
@@ -13,7 +13,7 @@ const caseStudies: { title: string; teaser: string; image: string | null }[] = [
   {
     title: "Mosaic",
     teaser:
-      "Redesigning a Norwegian product after uncovering what users and the client actually needed.",
+      "Redesigned a Norwegian product after uncovering what users and the client actually needed.",
     image: "/projects/mosaic.png",
   },
   {
@@ -28,16 +28,10 @@ export default function CaseStudies() {
     <div className="mt-16">
       <h3 className="font-display text-xl font-semibold text-ink">Case Studies</h3>
       <p className="mt-1.5 max-w-2xl text-lg leading-relaxed text-muted">
-        In depth breakdowns of my process are on their way.
+        Some of the work shown here has been renamed or lightly altered due
+        to client confidentiality. The thinking, process and quality behind
+        it remain exactly as delivered.
       </p>
-      <div className="mt-4 flex max-w-2xl items-start gap-2.5 rounded-xl border border-sky bg-sky/35 px-4 py-3">
-        <InfoIcon className="mt-0.5 h-4 w-4 shrink-0 text-sky-ink" />
-        <p className="text-sm leading-relaxed text-ink-soft">
-          Some of the work shown here has been renamed or lightly altered due
-          to client confidentiality. The thinking, process and quality behind
-          it remain exactly as delivered.
-        </p>
-      </div>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {caseStudies.map((cs, i) => (
