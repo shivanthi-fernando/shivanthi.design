@@ -17,7 +17,7 @@ export default async function DesignsCarousel() {
   return (
     <section className="pb-20 pt-0 sm:pb-28">
       <Reveal>
-        <DraggableMarquee items={items} speed={1} gap={28} className="py-10" />
+        <DraggableMarquee items={items} speed={1} gap={44} className="py-10" />
       </Reveal>
     </section>
   );
