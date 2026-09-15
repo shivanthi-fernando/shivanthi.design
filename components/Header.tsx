@@ -5,9 +5,15 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/site";
 
+// The three in-page sections the nav can scroll-spy on, on the home page.
+const SPY_IDS = ["projects", "blogs", "about"];
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  // "" means no section is in view yet (i.e. still up near Hero), which is
+  // what makes "Home" read as the active tab by default.
+  const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -21,6 +27,48 @@ export default function Header() {
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
+
+  // Scroll-spy: highlight whichever section is currently crossing the
+  // middle of the viewport, so the nav tracks scroll position instead of
+  // staying stuck on "Home" once you've scrolled past it. Only relevant on
+  // the home page — the section ids only exist there.
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection("");
+      return;
+    }
+    const sections = SPY_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+    if (sections.length === 0) return;
+
+    const visibleTops = new Map<string, number>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            visibleTops.set(entry.target.id, entry.boundingClientRect.top);
+          } else {
+            visibleTops.delete(entry.target.id);
+          }
+        }
+        if (visibleTops.size === 0) {
+          setActiveSection("");
+          return;
+        }
+        const topmost = [...visibleTops.entries()].sort((a, b) => a[1] - b[1])[0];
+        setActiveSection(topmost[0]);
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
+    );
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  const isNavItemActive = (href: string) => {
+    if (pathname !== "/") return false;
+    return href === "/" ? activeSection === "" : activeSection === href.replace("/#", "");
+  };
 
   const navLinkClass = (active: boolean) =>
     `rounded-full px-2.5 py-1.5 text-sm transition-colors sm:px-3.5 ${
@@ -55,8 +103,8 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
-                className={navLinkClass(pathname === item.href)}
+                aria-current={isNavItemActive(item.href) ? "page" : undefined}
+                className={navLinkClass(isNavItemActive(item.href))}
               >
                 {item.label}
               </Link>
@@ -111,7 +159,7 @@ export default function Header() {
           <div className="mt-2 rounded-2xl border border-line bg-card/95 p-2 shadow-lg backdrop-blur-md sm:hidden">
             <nav className="flex flex-col">
               {nav.map((item) => {
-                const active = pathname === item.href;
+                const active = isNavItemActive(item.href);
                 return (
                   <Link
                     key={item.href}
