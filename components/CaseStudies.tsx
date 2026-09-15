@@ -9,7 +9,7 @@ import Reveal from "./Reveal";
  */
 const caseStudies: { title: string; teaser: string }[] = [
   {
-    title: "thePREP",
+    title: "Mosaic",
     teaser:
       "Redesigning a Norwegian product after uncovering what users and the client actually needed.",
   },
@@ -21,6 +21,11 @@ export default function CaseStudies() {
       <h3 className="font-display text-xl font-semibold text-ink">Case Studies</h3>
       <p className="mt-1.5 max-w-2xl text-lg leading-relaxed text-muted">
         In depth breakdowns of my process are on their way.
+      </p>
+      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+        Some of the work shown here has been renamed or lightly altered due
+        to client confidentiality. The thinking, process and quality behind
+        it remain exactly as delivered.
       </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
