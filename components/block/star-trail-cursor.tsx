@@ -30,7 +30,7 @@ type StarTrailCursorProps = {
   minMoveDistance?: number;
 };
 
-const DEFAULT_COLORS = ["#FACC15"];
+const DEFAULT_COLORS = ["#FFE9AD"];
 
 let idCounter = 0;
 
@@ -126,7 +126,7 @@ export function StarTrailCursor({
     >
       {children}
       {text && (
-        <p className="pointer-events-none grid h-full place-items-center text-3xl text-[#FACC15]">{text}</p>
+        <p className="pointer-events-none grid h-full place-items-center text-3xl text-[#FFE9AD]">{text}</p>
       )}
 
       {mounted && (

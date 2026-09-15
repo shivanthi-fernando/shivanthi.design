@@ -11,7 +11,7 @@ export default async function DesignsCarousel() {
     width: photo.width,
     height: photo.height,
     imageClassName:
-      "h-[210px] w-[302px] rounded-2xl border border-[#e2e2e2] object-cover sm:h-[260px] sm:w-[374px] md:h-[310px] md:w-[446px] lg:h-[350px] lg:w-[503px]",
+      "h-[190px] w-[273px] rounded-2xl border border-[#e2e2e2] object-cover sm:h-[235px] sm:w-[338px] md:h-[280px] md:w-[402px] lg:h-[315px] lg:w-[453px]",
   }));
 
   return (
