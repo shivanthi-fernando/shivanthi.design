@@ -133,7 +133,7 @@ export default function FanCarousel({ photos, folder }: { photos: Photo[]; folde
               animate={{ x, y, rotate, scale, zIndex, opacity }}
               transition={{ type: "spring", stiffness: 240, damping: 26 }}
               whileHover={!isFocused ? { y: y - 10 } : undefined}
-              className={`pointer-events-auto absolute w-[220px] shrink-0 overflow-hidden rounded-2xl border border-line-strong bg-card shadow-[0_24px_48px_-20px_rgba(26,25,23,0.4)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink sm:w-[300px] md:w-[380px] lg:w-[430px] ${
+              className={`pointer-events-auto absolute w-[220px] shrink-0 overflow-hidden rounded-2xl border border-[#e2e2e2] bg-card shadow-[0_24px_48px_-20px_rgba(26,25,23,0.4)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink sm:w-[300px] md:w-[380px] lg:w-[430px] ${
                 isFocused ? "cursor-zoom-in" : "cursor-pointer"
               }`}
             >
