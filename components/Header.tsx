@@ -38,8 +38,8 @@ export default function Header() {
         <div
           className={`flex items-center justify-between gap-4 rounded-full border px-2.5 transition-all duration-300 sm:px-3.5 ${
             scrolled
-              ? "border-line bg-card/80 py-1.5 shadow-sm backdrop-blur-md"
-              : "border-line/60 bg-card/50 py-2.5 backdrop-blur-sm"
+              ? "border-line bg-card/65 py-1.5 shadow-sm backdrop-blur-xl"
+              : "border-line/60 bg-card/35 py-2.5 backdrop-blur-lg"
           }`}
         >
           {/* Brand */}
