@@ -46,7 +46,7 @@ export default function CaseStudies() {
         decisions and outcomes.
       </p>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-6 grid gap-8 sm:grid-cols-2">
         {caseStudies.map((cs, i) => {
           const isLive = Boolean(cs.href) && !cs.disabled;
           const cardClass = `block overflow-hidden rounded-2xl border border-line bg-card ${
