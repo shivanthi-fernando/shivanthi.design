@@ -8,12 +8,17 @@ import { ArrowRight, ImageIcon } from "./icons";
  * one-line heading, the project's (possibly anonymized) name as smaller
  * supporting text below it, and either a "Read case study" link (once
  * `href` is set) or a "Coming Soon" badge for projects not written up yet.
+ *
+ * `disabled` puts a "Coming soon" overlay on top of an otherwise-finished
+ * card and turns off the click-through, without touching `href` or the
+ * case study page itself — flip it back to false to relink it later.
  */
 const caseStudies: {
   heading: string;
   name: string;
   image: string | null;
   href: string | null;
+  disabled?: boolean;
 }[] = [
   {
     heading:
@@ -21,6 +26,7 @@ const caseStudies: {
     name: "BrightRoot",
     image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
     href: "/projects/brightroot",
+    disabled: true,
   },
   {
     heading:
@@ -28,6 +34,7 @@ const caseStudies: {
     name: "Mosaic",
     image: "/projects/Mosaic/Mosaic_Thumbnail.png",
     href: "/projects/mosaic",
+    disabled: true,
   },
 ];
 
@@ -41,8 +48,12 @@ export default function CaseStudies() {
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {caseStudies.map((cs, i) => {
-          const cardClass =
-            "group block overflow-hidden rounded-2xl border border-line bg-card transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_24px_44px_-28px_rgba(26,25,23,0.35)]";
+          const isLive = Boolean(cs.href) && !cs.disabled;
+          const cardClass = `group block overflow-hidden rounded-2xl border border-line bg-card transition-all duration-300 ${
+            isLive
+              ? "hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_24px_44px_-28px_rgba(26,25,23,0.35)]"
+              : ""
+          }`;
 
           const content = (
             <>
@@ -66,14 +77,10 @@ export default function CaseStudies() {
                   {cs.name}
                 </span>
                 <h4 className="mt-3 font-display text-lg font-semibold">{cs.heading}</h4>
-                {cs.href ? (
+                {isLive && (
                   <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-ink">
                     Read case study
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                ) : (
-                  <span className="mt-4 inline-flex items-center rounded-full bg-paper-2 px-3 py-1 text-xs font-medium text-muted">
-                    Coming Soon
                   </span>
                 )}
               </div>
@@ -82,13 +89,26 @@ export default function CaseStudies() {
 
           return (
             <Reveal key={cs.name} delay={i * 80}>
-              {cs.href ? (
-                <Link href={cs.href} className={cardClass}>
-                  {content}
-                </Link>
-              ) : (
-                <div className={cardClass}>{content}</div>
-              )}
+              <div className="relative">
+                {isLive ? (
+                  <Link href={cs.href!} className={cardClass}>
+                    {content}
+                  </Link>
+                ) : (
+                  <div className={cardClass}>{content}</div>
+                )}
+
+                {cs.disabled && (
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 flex cursor-not-allowed items-center justify-center rounded-2xl bg-paper/70 backdrop-blur-[2px]"
+                  >
+                    <span className="rounded-full bg-ink px-4 py-1.5 text-sm font-medium text-paper shadow-md">
+                      Coming soon
+                    </span>
+                  </div>
+                )}
+              </div>
             </Reveal>
           );
         })}
