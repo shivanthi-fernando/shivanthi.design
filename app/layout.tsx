@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Dancing_Script } from "next/font/google";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -13,11 +14,12 @@ const inter = Inter({
   display: "swap",
 });
 
-// Handwritten script — used only for the "Shivanthi Fernando" wordmark in the nav
-const dancingScript = Dancing_Script({
-  subsets: ["latin"],
+// Handwritten script — used only for the "Shivanthi" wordmark in the nav.
+// Cursive Amber is a demo font (personal-use license); commercial use on
+// this site needs the paid license from timurtype.com before going live.
+const cursiveAmber = localFont({
+  src: "../public/fonts/CursiveAmber.ttf",
   variable: "--font-script",
-  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -70,7 +72,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${dancingScript.variable}`}
+      className={`${inter.variable} ${cursiveAmber.variable}`}
     >
       <body className="antialiased">
         <Header />

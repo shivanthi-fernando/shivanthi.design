@@ -44,8 +44,8 @@ export default function Header() {
         >
           {/* Brand */}
           <Link href="/" className="flex items-center rounded-full py-1 pl-1 pr-2">
-            <span className="font-script text-2xl font-semibold leading-none text-ink">
-              {site.name}
+            <span className="font-script text-3xl font-semibold leading-none text-ink">
+              {site.shortName}
             </span>
           </Link>
 
