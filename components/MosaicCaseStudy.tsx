@@ -7,6 +7,7 @@ import {
   CaseStudyH3 as H3,
   CaseStudyP as P,
   CaseStudyList,
+  CaseStudyFacts,
   CaseStudyImageSlot as ImageSlot,
 } from "./case-study-ui";
 
@@ -38,6 +39,11 @@ export default function MosaicCaseStudy() {
         </div>
 
         <div className="max-w-2xl">
+          <CaseStudyFacts
+            role="UX/UI Designer"
+            projectType="Client-requested redesign & design system"
+          />
+
           <H2>Overview</H2>
           <P>
             Mosaic was an ongoing product when I joined the project. The

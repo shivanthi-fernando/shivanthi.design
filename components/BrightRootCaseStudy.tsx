@@ -7,18 +7,9 @@ import {
   CaseStudyH3 as H3,
   CaseStudyP as P,
   CaseStudyList,
+  CaseStudyFacts,
   CaseStudyImageSlot as ImageSlot,
 } from "./case-study-ui";
-
-const facts = [
-  { label: "Role", value: "UX/UI Designer" },
-  { label: "Project type", value: "Client-requested product design" },
-  {
-    label: "Scope",
-    value: "Public landing page, student exam portal, and admin section",
-  },
-  { label: "Tools", value: "Figma" },
-];
 
 const examFlow = [
   "System check",
@@ -52,16 +43,7 @@ export default function BrightRootCaseStudy() {
         </div>
 
         <div className="max-w-2xl">
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {facts.map((f) => (
-              <div key={f.label}>
-                <div className="font-label text-xs font-medium tracking-wide text-muted">
-                  {f.label}
-                </div>
-                <div className="mt-1 text-base font-medium text-ink">{f.value}</div>
-              </div>
-            ))}
-          </div>
+          <CaseStudyFacts role="UX/UI Designer" projectType="Client-requested product design" />
 
           <H2>The Challenge</H2>
           <P>

@@ -34,6 +34,36 @@ export function CaseStudyList({ children }: { children: ReactNode }) {
 }
 
 /**
+ * The Role / Project type facts shown at the top of every case study —
+ * same two fields everywhere so the format stays identical across
+ * projects; only the values change.
+ */
+export function CaseStudyFacts({
+  role,
+  projectType,
+}: {
+  role: string;
+  projectType: string;
+}) {
+  return (
+    <div className="mt-10 grid grid-cols-2 gap-6">
+      <div>
+        <div className="font-label text-xs font-medium tracking-wide text-muted">
+          Role
+        </div>
+        <div className="mt-1 text-base font-medium text-ink">{role}</div>
+      </div>
+      <div>
+        <div className="font-label text-xs font-medium tracking-wide text-muted">
+          Project type
+        </div>
+        <div className="mt-1 text-base font-medium text-ink">{projectType}</div>
+      </div>
+    </div>
+  );
+}
+
+/**
  * A dashed-border slot marking where a real screenshot goes once it's
  * ready to share — keeps the case study's structure/captions in place
  * without blocking on assets that don't exist yet. Drop a real <Image>
