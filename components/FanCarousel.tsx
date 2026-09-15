@@ -154,12 +154,12 @@ export default function FanCarousel({ photos, folder }: { photos: Photo[]; folde
       </motion.div>
 
       {photos.length > 1 && (
-        <div className="mt-6 flex items-center justify-center gap-3">
+        <div className="mt-3 flex items-center justify-center gap-3">
           <button
             type="button"
             onClick={() => go(-1)}
             aria-label="Previous design"
-            className="grid h-10 w-10 place-items-center rounded-full border border-line-strong bg-card text-ink transition-colors hover:border-ink"
+            className="grid h-10 w-10 place-items-center rounded-full border border-[#e2e2e2] bg-card text-ink transition-colors hover:border-[#796BA6] hover:text-[#796BA6]"
           >
             <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 rotate-180">
               <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -169,7 +169,7 @@ export default function FanCarousel({ photos, folder }: { photos: Photo[]; folde
             type="button"
             onClick={() => go(1)}
             aria-label="Next design"
-            className="grid h-10 w-10 place-items-center rounded-full border border-line-strong bg-card text-ink transition-colors hover:border-ink"
+            className="grid h-10 w-10 place-items-center rounded-full border border-[#e2e2e2] bg-card text-ink transition-colors hover:border-[#796BA6] hover:text-[#796BA6]"
           >
             <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
               <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
