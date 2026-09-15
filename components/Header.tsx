@@ -26,7 +26,7 @@ export default function Header() {
     `rounded-full px-2.5 py-1.5 text-sm transition-colors sm:px-3.5 ${
       active
         ? "font-semibold text-[#7C6BAA]"
-        : "font-medium text-ink-soft hover:text-[#7C6BAA]"
+        : "font-medium text-ink-soft hover:text-[#C9BEFB]"
     }`;
 
   return (
@@ -120,7 +120,7 @@ export default function Header() {
                     className={`rounded-lg px-3 py-2.5 text-sm transition-colors ${
                       active
                         ? "font-semibold text-[#7C6BAA]"
-                        : "font-medium text-ink-soft hover:text-[#7C6BAA]"
+                        : "font-medium text-ink-soft hover:text-[#C9BEFB]"
                     }`}
                   >
                     {item.label}
