@@ -16,8 +16,7 @@ export default function Footer() {
               <span className="font-display text-lg font-semibold">{site.name}</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted">
-              {site.role} helping SaaS &amp; AI startups design and ship products
-              people love to use.
+              {site.role} who turns ideas into experiences that feel natural to use.
             </p>
             <a
               href={`mailto:${site.email}`}
@@ -76,7 +75,7 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-xs text-muted sm:flex-row">
           <p>© {year} {site.name}. All rights reserved.</p>
-          <p className="font-mono">Designed &amp; built with care · pastel edition</p>
+          <p className="font-mono">Designed &amp; built with care 🩷</p>
         </div>
       </div>
     </footer>
