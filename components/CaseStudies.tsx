@@ -26,7 +26,7 @@ const caseStudies: {
     heading:
       "Redesigned a Norwegian product after uncovering what users and the client actually needed.",
     name: "Mosaic",
-    image: "/projects/mosaic.png",
+    image: "/projects/Mosaic/Mosaic_Thumbnail.png",
     href: "/projects/mosaic",
   },
 ];
