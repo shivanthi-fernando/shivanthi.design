@@ -1,6 +1,8 @@
 import { site } from "@/lib/site";
 import { SectionHead, InlineLink } from "./ui";
-import DesignShots from "./DesignShots";
+// DesignShots hidden for now — re-enable by restoring the import and
+// the <DesignShots /> render below.
+// import DesignShots from "./DesignShots";
 import CaseStudies from "./CaseStudies";
 
 export default async function Work() {
@@ -18,7 +20,6 @@ export default async function Work() {
           </InlineLink>
         </div>
 
-        <DesignShots />
         <CaseStudies />
       </div>
     </section>
