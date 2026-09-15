@@ -4,28 +4,29 @@ import Reveal from "./Reveal";
 import { ArrowRight, ImageIcon } from "./icons";
 
 /**
- * Case Studies — cards for full write-ups: a thumbnail, title, one-line
- * teaser, and either a "Read case study" link (once `href` is set) or a
- * "Coming Soon" badge for projects that aren't written up yet.
+ * Case Studies — cards for full write-ups: a thumbnail, a descriptive
+ * one-line heading, the project's (possibly anonymized) name as smaller
+ * supporting text below it, and either a "Read case study" link (once
+ * `href` is set) or a "Coming Soon" badge for projects not written up yet.
  */
 const caseStudies: {
-  title: string;
-  teaser: string;
+  heading: string;
+  name: string;
   image: string | null;
   href: string | null;
 }[] = [
   {
-    title: "Mosaic",
-    teaser:
+    heading:
       "Redesigned a Norwegian product after uncovering what users and the client actually needed.",
+    name: "Mosaic",
     image: "/projects/mosaic.png",
     href: "/projects/mosaic",
   },
   {
-    title: "BrightRoot",
-    teaser:
+    heading:
       "Designing an institute platform's public pages, student exam portal, and admin workspace.",
-    image: null,
+    name: "BrightRoot",
+    image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
     href: "/projects/brightroot",
   },
 ];
@@ -61,8 +62,8 @@ export default function CaseStudies() {
                 )}
               </div>
               <div className="p-6">
-                <h4 className="font-display text-lg font-semibold">{cs.title}</h4>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{cs.teaser}</p>
+                <h4 className="font-display text-lg font-semibold">{cs.heading}</h4>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{cs.name}</p>
                 {cs.href ? (
                   <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-ink">
                     Read case study
@@ -78,7 +79,7 @@ export default function CaseStudies() {
           );
 
           return (
-            <Reveal key={cs.title} delay={i * 80}>
+            <Reveal key={cs.name} delay={i * 80}>
               {cs.href ? (
                 <Link href={cs.href} className={cardClass}>
                   {content}

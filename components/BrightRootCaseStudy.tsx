@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SectionHead } from "./ui";
 import { ArrowRight } from "./icons";
@@ -32,6 +33,19 @@ export default function BrightRootCaseStudy() {
             <ArrowRight className="h-3.5 w-3.5 rotate-180" />
             Back to Projects
           </Link>
+        </Reveal>
+
+        <Reveal delay={40}>
+          <div className="relative mt-6 aspect-[1728/1202] overflow-hidden rounded-2xl border border-line bg-paper-2">
+            <Image
+              src="/projects/BrightRoot/BrightRoot_Thumbnail.png"
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 960px, 90vw"
+              className="object-cover"
+              priority
+            />
+          </div>
         </Reveal>
 
         <div className="mt-6">
