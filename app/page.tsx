@@ -5,8 +5,8 @@ import Work from "@/components/Work";
 import Writing from "@/components/Writing";
 import { StarTrailCursor } from "@/components/block/star-trail-cursor";
 
-// DesignsCarousel, About, and Work all read from public/ on every render, so
-// new photos/projects dropped into their folders show up without a rebuild.
+// DesignsCarousel and About both read from public/ on every render, so new
+// photos dropped into their folders show up without a rebuild.
 export const dynamic = "force-dynamic";
 
 export default function Home() {
@@ -16,9 +16,19 @@ export default function Home() {
     <StarTrailCursor>
       <Hero />
       <DesignsCarousel />
-      <About compact />
-      <Work compact />
-      <Writing compact />
+
+      {/* scroll-mt clears the fixed header so a jump from the nav (or from
+          another page's "#about"/"#projects"/"#blogs" link) doesn't land the
+          section title underneath the pill. */}
+      <div id="about" className="scroll-mt-28">
+        <About compact />
+      </div>
+      <div id="projects" className="scroll-mt-28">
+        <Work />
+      </div>
+      <div id="blogs" className="scroll-mt-28">
+        <Writing />
+      </div>
     </StarTrailCursor>
   );
 }

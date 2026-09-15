@@ -20,11 +20,16 @@ export const site = {
   ],
 };
 
+// All four items live on the home page now — Home is the top of the page,
+// the rest are in-page anchors. Clicking any of them from another route
+// (e.g. a case study or /about) navigates to "/" and then jumps to the
+// section; the standalone /about page itself is still reachable, just only
+// via the "Learn more" link in the About section, not from this nav.
 export const nav = [
   { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
-  { label: "Blogs", href: "/blogs" },
-  { label: "About", href: "/about" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Blogs", href: "/#blogs" },
+  { label: "About", href: "/#about" },
 ];
 
 export type Pastel = "butter" | "mint" | "lavender" | "peach" | "sky" | "blush";

@@ -40,7 +40,7 @@ export default function Hero() {
             <ButtonPrimary href={site.bookingUrl} external className="w-full sm:w-auto">
               Book a call
             </ButtonPrimary>
-            <ButtonGhost href="/projects" className="w-full sm:w-auto">
+            <ButtonGhost href="/#projects" className="w-full sm:w-auto">
               Check my projects
             </ButtonGhost>
           </Reveal>

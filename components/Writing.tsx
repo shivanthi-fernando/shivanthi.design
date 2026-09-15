@@ -9,16 +9,14 @@ import Reveal from "./Reveal";
  * On mobile each card stacks image-on-top, text-below; from the sm
  * breakpoint up it switches to the image-left, text-right row layout.
  * Newest first; each card opens the full article externally.
+ *
+ * Only ever rendered as the home page's Blogs section now (the standalone
+ * /blogs listing page was removed in favor of in-page navigation), so this
+ * always uses the tighter, no-standalone-page spacing.
  */
-export default function Writing({ compact = false }: { compact?: boolean }) {
+export default function Writing() {
   return (
-    <section
-      className={
-        compact
-          ? "pb-20 pt-4 sm:pb-28 sm:pt-6"
-          : "min-h-screen pb-20 pt-28 sm:pb-28 sm:pt-32 md:pt-36"
-      }
-    >
+    <section className="pb-20 pt-4 sm:pb-28 sm:pt-6">
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
         <SectionHead
           label="Blogs"

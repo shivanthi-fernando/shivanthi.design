@@ -116,6 +116,7 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
+                    onClick={() => setMenuOpen(false)}
                     aria-current={active ? "page" : undefined}
                     className={`rounded-lg px-3 py-2.5 text-sm transition-colors ${
                       active

@@ -22,7 +22,7 @@ export default function MosaicCaseStudy() {
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
         <Reveal>
           <Link
-            href="/projects"
+            href="/#projects"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
           >
             <ArrowRight className="h-3.5 w-3.5 rotate-180" />
