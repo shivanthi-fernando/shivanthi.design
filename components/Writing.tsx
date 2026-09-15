@@ -10,9 +10,15 @@ import Reveal from "./Reveal";
  * breakpoint up it switches to the image-left, text-right row layout.
  * Newest first; each card opens the full article externally.
  */
-export default function Writing() {
+export default function Writing({ compact = false }: { compact?: boolean }) {
   return (
-    <section className="min-h-screen pb-20 pt-28 sm:pb-28 sm:pt-32 md:pt-36">
+    <section
+      className={
+        compact
+          ? "pb-20 pt-4 sm:pb-28 sm:pt-6"
+          : "min-h-screen pb-20 pt-28 sm:pb-28 sm:pt-32 md:pt-36"
+      }
+    >
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
         <SectionHead
           label="Blogs"

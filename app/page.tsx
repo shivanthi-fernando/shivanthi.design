@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import DesignsCarousel from "@/components/DesignsCarousel";
 import About from "@/components/About";
 import Work from "@/components/Work";
+import Writing from "@/components/Writing";
 import { StarTrailCursor } from "@/components/block/star-trail-cursor";
 
 // DesignsCarousel, About, and Work all read from public/ on every render, so
@@ -17,6 +18,7 @@ export default function Home() {
       <DesignsCarousel />
       <About compact />
       <Work compact />
+      <Writing compact />
     </StarTrailCursor>
   );
 }
