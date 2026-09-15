@@ -1,25 +1,31 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "./Reveal";
-import { ImageIcon } from "./icons";
+import { ArrowRight, ImageIcon } from "./icons";
 
 /**
- * Case Studies — cards for full write-ups that aren't live yet: a
- * thumbnail, title, one-line teaser, and a "Coming Soon" badge in place
- * of a read link. When a case study is ready, swap its badge for a real
- * link (and its `image` for a real thumbnail if it's still a placeholder)
- * — no layout change needed.
+ * Case Studies — cards for full write-ups: a thumbnail, title, one-line
+ * teaser, and either a "Read case study" link (once `href` is set) or a
+ * "Coming Soon" badge for projects that aren't written up yet.
  */
-const caseStudies: { title: string; teaser: string; image: string | null }[] = [
+const caseStudies: {
+  title: string;
+  teaser: string;
+  image: string | null;
+  href: string | null;
+}[] = [
   {
     title: "Mosaic",
     teaser:
       "Redesigned a Norwegian product after uncovering what users and the client actually needed.",
     image: "/projects/mosaic.png",
+    href: "/projects/mosaic",
   },
   {
     title: "Next Case Study",
     teaser: "Another project write-up is in progress — check back soon.",
     image: null,
+    href: null,
   },
 ];
 
@@ -34,9 +40,12 @@ export default function CaseStudies() {
       </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        {caseStudies.map((cs, i) => (
-          <Reveal key={cs.title} delay={i * 80}>
-            <div className="overflow-hidden rounded-2xl border border-line bg-card transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_24px_44px_-28px_rgba(26,25,23,0.35)]">
+        {caseStudies.map((cs, i) => {
+          const cardClass =
+            "group block overflow-hidden rounded-2xl border border-line bg-card transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_24px_44px_-28px_rgba(26,25,23,0.35)]";
+
+          const content = (
+            <>
               <div className="relative aspect-[3/2] bg-paper-2">
                 {cs.image ? (
                   <Image
@@ -55,13 +64,32 @@ export default function CaseStudies() {
               <div className="p-6">
                 <h4 className="font-display text-lg font-semibold">{cs.title}</h4>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{cs.teaser}</p>
-                <span className="mt-4 inline-flex items-center rounded-full bg-paper-2 px-3 py-1 text-xs font-medium text-muted">
-                  Coming Soon
-                </span>
+                {cs.href ? (
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-ink">
+                    Read case study
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                ) : (
+                  <span className="mt-4 inline-flex items-center rounded-full bg-paper-2 px-3 py-1 text-xs font-medium text-muted">
+                    Coming Soon
+                  </span>
+                )}
               </div>
-            </div>
-          </Reveal>
-        ))}
+            </>
+          );
+
+          return (
+            <Reveal key={cs.title} delay={i * 80}>
+              {cs.href ? (
+                <Link href={cs.href} className={cardClass}>
+                  {content}
+                </Link>
+              ) : (
+                <div className={cardClass}>{content}</div>
+              )}
+            </Reveal>
+          );
+        })}
       </div>
     </div>
   );
