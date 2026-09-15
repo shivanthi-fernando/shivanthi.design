@@ -24,7 +24,7 @@ const caseStudies: {
   },
   {
     heading:
-      "Designing an institute platform's public pages, student exam portal, and admin workspace.",
+      "Designed an institute platform's public pages, student exam portal, and admin workspace.",
     name: "BrightRoot",
     image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
     href: "/projects/brightroot",
