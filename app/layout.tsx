@@ -74,7 +74,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${cursiveAmber.variable}`}
     >
-      <body className="antialiased">
+      <body className="overflow-x-hidden antialiased">
         <Header />
         <main>{children}</main>
         <Footer />

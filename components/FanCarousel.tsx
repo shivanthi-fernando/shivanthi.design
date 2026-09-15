@@ -105,7 +105,7 @@ export default function FanCarousel({ photos, folder }: { photos: Photo[]; folde
           else if (info.offset.x > threshold) setVirtual((v) => v - 1);
           pauseThenResume();
         }}
-        className="relative mx-auto flex h-[380px] cursor-grab items-center justify-center active:cursor-grabbing sm:h-[460px] md:h-[520px] lg:h-[560px]"
+        className="relative mx-auto flex h-[380px] cursor-grab items-center justify-start active:cursor-grabbing sm:h-[460px] md:h-[520px] lg:h-[560px]"
       >
         {visible.map((v) => {
           const offset = v - virtual;
@@ -133,6 +133,7 @@ export default function FanCarousel({ photos, folder }: { photos: Photo[]; folde
               animate={{ x, y, rotate, scale, zIndex, opacity }}
               transition={{ type: "spring", stiffness: 240, damping: 26 }}
               whileHover={!isFocused ? { y: y - 10 } : undefined}
+              style={{ transformOrigin: "left center" }}
               className={`pointer-events-auto absolute w-[220px] shrink-0 overflow-hidden rounded-2xl border border-[#e2e2e2] bg-card shadow-[0_24px_48px_-20px_rgba(26,25,23,0.4)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink sm:w-[300px] md:w-[380px] lg:w-[430px] ${
                 isFocused ? "cursor-zoom-in" : "cursor-pointer"
               }`}
