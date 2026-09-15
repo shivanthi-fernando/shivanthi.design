@@ -151,6 +151,16 @@ export function ImageIcon(props: IconProps) {
   );
 }
 
+export function InfoIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden {...props}>
+      <circle cx="12" cy="12" r="9.25" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M12 11v5.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <circle cx="12" cy="7.75" r="1.15" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function socialIcon(label: string) {
   switch (label) {
     case "X":
