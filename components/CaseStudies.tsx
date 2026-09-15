@@ -73,9 +73,7 @@ export default function CaseStudies() {
                 )}
               </div>
               <div className="bg-lavender/25 p-6">
-                <span className="inline-flex items-center rounded-full bg-paper-2 px-3 py-1 text-xs font-medium text-muted">
-                  {cs.name}
-                </span>
+                <span className="text-xs font-medium text-muted">{cs.name}</span>
                 <h4 className="mt-3 font-display text-lg font-semibold">{cs.heading}</h4>
                 <div className="mt-4 flex items-center gap-3">
                   {isLive && (
