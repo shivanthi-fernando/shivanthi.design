@@ -3,9 +3,9 @@ import OtherExplorations from "./OtherExplorations";
 import ProjectsTabs from "./ProjectsTabs";
 import CaseStudies from "./CaseStudies";
 
-export default async function Work() {
+export default async function Work({ compact = false }: { compact?: boolean }) {
   return (
-    <section className="pb-20 pt-28 sm:pb-28 sm:pt-32 md:pt-36">
+    <section className={compact ? "pb-20 pt-4 sm:pb-28 sm:pt-6" : "pb-20 pt-28 sm:pb-28 sm:pt-32 md:pt-36"}>
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
         <SectionHead
           label="Work"

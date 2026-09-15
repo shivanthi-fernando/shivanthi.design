@@ -1,10 +1,11 @@
 import Hero from "@/components/Hero";
 import DesignsCarousel from "@/components/DesignsCarousel";
 import About from "@/components/About";
+import Work from "@/components/Work";
 import { StarTrailCursor } from "@/components/block/star-trail-cursor";
 
-// DesignsCarousel and About both read from public/ on every render, so new
-// photos dropped into their folders show up without a rebuild.
+// DesignsCarousel, About, and Work all read from public/ on every render, so
+// new photos/projects dropped into their folders show up without a rebuild.
 export const dynamic = "force-dynamic";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <DesignsCarousel />
       <About compact />
+      <Work compact />
     </StarTrailCursor>
   );
 }
