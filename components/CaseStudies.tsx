@@ -61,7 +61,7 @@ export default function CaseStudies() {
                   </div>
                 )}
               </div>
-              <div className="p-6">
+              <div className="bg-lavender/25 p-6">
                 <span className="inline-flex items-center rounded-full bg-paper-2 px-3 py-1 text-xs font-medium text-muted">
                   {cs.name}
                 </span>
