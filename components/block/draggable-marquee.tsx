@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion, useMotionValue } from "motion/react";
+import { createPortal } from "react-dom";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, animate, motion, useMotionValue } from "motion/react";
 import Image from "next/image";
 
 export type MarqueeItem = {
@@ -20,6 +21,12 @@ type DraggableMarqueeProps = {
   className?: string;
   /** Gap between items, in px. */
   gap?: number;
+  /** Scale any item pops to on hover — set to 1 to disable. */
+  hoverScale?: number;
+  /** Show prev/next arrow buttons centered below the strip. */
+  showArrows?: boolean;
+  /** Click an item to open it full-screen. */
+  lightbox?: boolean;
 };
 
 /**
@@ -28,14 +35,34 @@ type DraggableMarqueeProps = {
  * the demo call-site was provided, not an implementation): the item set is
  * rendered three times back-to-back and the scroll position is wrapped back
  * into range every frame, so the loop point is invisible in either drag
- * direction. Auto-scroll pauses for the duration of a drag and picks back up
- * — at the dragged-to position — the instant it ends.
+ * direction. Auto-scroll pauses for the duration of a drag (or a nudge from
+ * the arrow buttons) and picks back up — at the dragged-to position — the
+ * instant it ends.
+ *
+ * Any item pops up on hover regardless of its position in the strip, and
+ * (when `lightbox` is on) a genuine click — as opposed to the end of a drag
+ * — opens that item full-screen.
  */
-export function DraggableMarquee({ items, speed = 1, className = "", gap = 24 }: DraggableMarqueeProps) {
+export function DraggableMarquee({
+  items,
+  speed = 1,
+  className = "",
+  gap = 24,
+  hoverScale = 1.12,
+  showArrows = true,
+  lightbox = true,
+}: DraggableMarqueeProps) {
   const setRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const draggingRef = useRef(false);
+  const dragDistanceRef = useRef(0);
   const loopWidthRef = useRef(0);
+  const [mounted, setMounted] = useState(false);
+  const [lightboxItem, setLightboxItem] = useState<MarqueeItem | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Measure one full set of items so we know how far to scroll before
   // wrapping back to the start of the loop.
@@ -73,6 +100,36 @@ export function DraggableMarquee({ items, speed = 1, className = "", gap = 24 }:
     return () => cancelAnimationFrame(rafId);
   }, [speed, x]);
 
+  // Lightbox: lock page scroll and close on Escape while open.
+  useEffect(() => {
+    if (!lightboxItem) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxItem(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [lightboxItem]);
+
+  const nudge = (dir: 1 | -1) => {
+    const loopWidth = loopWidthRef.current;
+    if (!loopWidth) return;
+    const step = loopWidth / items.length;
+    draggingRef.current = true;
+    animate(x, x.get() - dir * step, {
+      type: "spring",
+      stiffness: 300,
+      damping: 32,
+      onComplete: () => {
+        draggingRef.current = false;
+      },
+    });
+  };
+
   if (items.length === 0) return null;
 
   const renderSet = (setIndex: number) => (
@@ -83,7 +140,24 @@ export function DraggableMarquee({ items, speed = 1, className = "", gap = 24 }:
       style={{ gap }}
     >
       {items.map((item) => (
-        <div key={`${setIndex}-${item.id}`} className="shrink-0">
+        <div
+          key={`${setIndex}-${item.id}`}
+          onClick={() => {
+            const wasDrag = dragDistanceRef.current > 5;
+            dragDistanceRef.current = 0;
+            if (!lightbox || wasDrag) return;
+            setLightboxItem(item);
+          }}
+          className={`shrink-0 transition-transform duration-300 ease-out hover:z-10 ${
+            lightbox ? "cursor-zoom-in" : ""
+          }`}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = `scale(${hoverScale})`;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
           <Image
             src={item.src}
             alt={item.alt ?? ""}
@@ -98,23 +172,103 @@ export function DraggableMarquee({ items, speed = 1, className = "", gap = 24 }:
   );
 
   return (
-    <div className={`overflow-hidden ${className}`}>
-      <motion.div
-        className="flex cursor-grab active:cursor-grabbing"
-        style={{ x, gap }}
-        drag="x"
-        dragMomentum={false}
-        onDragStart={() => {
-          draggingRef.current = true;
-        }}
-        onDragEnd={() => {
-          draggingRef.current = false;
-        }}
-      >
-        {renderSet(0)}
-        {renderSet(1)}
-        {renderSet(2)}
-      </motion.div>
+    <div>
+      <div className={`overflow-hidden ${className}`}>
+        <motion.div
+          className="flex cursor-grab active:cursor-grabbing"
+          style={{ x, gap }}
+          drag="x"
+          dragMomentum={false}
+          onDragStart={() => {
+            draggingRef.current = true;
+            dragDistanceRef.current = 0;
+          }}
+          onDrag={(_, info) => {
+            dragDistanceRef.current += Math.abs(info.delta.x);
+          }}
+          onDragEnd={() => {
+            draggingRef.current = false;
+          }}
+        >
+          {renderSet(0)}
+          {renderSet(1)}
+          {renderSet(2)}
+        </motion.div>
+      </div>
+
+      {showArrows && (
+        <div className="mt-3 flex items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={() => nudge(-1)}
+            aria-label="Scroll left"
+            className="grid h-10 w-10 place-items-center rounded-full border border-[#e2e2e2] bg-card text-ink transition-colors hover:border-[#796BA6] hover:text-[#796BA6]"
+          >
+            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 rotate-180">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => nudge(1)}
+            aria-label="Scroll right"
+            className="grid h-10 w-10 place-items-center rounded-full border border-[#e2e2e2] bg-card text-ink transition-colors hover:border-[#796BA6] hover:text-[#796BA6]"
+          >
+            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+      )}
+
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {lightboxItem && (
+              <motion.div
+                key="marquee-lightbox-backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={() => setLightboxItem(null)}
+                className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/80 p-6 backdrop-blur-sm"
+              >
+                <motion.div
+                  key="marquee-lightbox-frame"
+                  initial={{ opacity: 0, scale: 0.94 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.94 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-card shadow-[0_40px_80px_-24px_rgba(0,0,0,0.55)]"
+                >
+                  <div className="relative aspect-[1728/1202] w-full">
+                    <Image
+                      src={lightboxItem.src}
+                      alt={lightboxItem.alt ?? ""}
+                      fill
+                      sizes="90vw"
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setLightboxItem(null)}
+                    aria-label="Close full-screen view"
+                    className="absolute right-4 top-4 grid h-10 w-10 cursor-pointer place-items-center rounded-full bg-card/90 text-ink shadow-md backdrop-blur transition-colors hover:bg-card"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+                      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body,
+        )}
     </div>
   );
 }

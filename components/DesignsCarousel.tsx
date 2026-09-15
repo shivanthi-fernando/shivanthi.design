@@ -11,13 +11,13 @@ export default async function DesignsCarousel() {
     width: photo.width,
     height: photo.height,
     imageClassName:
-      "h-[180px] w-[258px] rounded-2xl border border-[#e2e2e2] object-cover sm:h-[220px] sm:w-[316px] md:h-[260px] md:w-[373px]",
+      "h-[210px] w-[302px] rounded-2xl border border-[#e2e2e2] object-cover sm:h-[260px] sm:w-[374px] md:h-[310px] md:w-[446px] lg:h-[350px] lg:w-[503px]",
   }));
 
   return (
     <section className="pb-20 pt-0 sm:pb-28">
       <Reveal>
-        <DraggableMarquee items={items} speed={1} className="py-8" />
+        <DraggableMarquee items={items} speed={1} gap={28} className="py-10" />
       </Reveal>
     </section>
   );
