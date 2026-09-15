@@ -16,7 +16,21 @@ export default async function About({ compact = false }: { compact?: boolean }) 
   return (
     <section className={compact ? "pb-20 pt-4 sm:pb-28 sm:pt-6" : "pb-20 pt-28 sm:pb-28 sm:pt-32 md:pt-36"}>
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
-        <SectionHead label="About" title="About me" />
+        {!compact && (
+          <Reveal>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+            >
+              <ArrowRight className="h-3.5 w-3.5 rotate-180" />
+              Back to Home
+            </Link>
+          </Reveal>
+        )}
+
+        <div className={compact ? undefined : "mt-6"}>
+          <SectionHead label="About" title="About me" />
+        </div>
 
         <div className="mt-7 flex flex-col-reverse gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
           {/* Narrative intro */}
