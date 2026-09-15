@@ -111,9 +111,9 @@ export default function FanCarousel({ photos, folder }: { photos: Photo[]; folde
           const offset = v - virtual;
           const isFocused = offset === 0;
           const photo = photos[mod(v, photos.length)];
-          const rotate = offset * 7;
+          const rotate = 0;
           const x = offset * 130;
-          const y = offset * offset * 9 - (isFocused ? 40 : 0);
+          const y = 0;
           const scale = isFocused ? 1.2 : Math.max(1 - Math.abs(offset) * 0.09, 0.55);
           const zIndex = isFocused ? 50 : 30 - Math.abs(offset);
           const opacity = Math.abs(offset) > WINDOW - 1 ? 0 : 1;
