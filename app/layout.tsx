@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     creator: "@shivanthi",
   },
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/Imgs/shivanthi.png", type: "image/png" }],
   },
 };
 
