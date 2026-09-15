@@ -62,8 +62,10 @@ export default function CaseStudies() {
                 )}
               </div>
               <div className="p-6">
-                <h4 className="font-display text-lg font-semibold">{cs.heading}</h4>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{cs.name}</p>
+                <span className="inline-flex items-center rounded-full bg-paper-2 px-3 py-1 text-xs font-medium text-muted">
+                  {cs.name}
+                </span>
+                <h4 className="mt-3 font-display text-lg font-semibold">{cs.heading}</h4>
                 {cs.href ? (
                   <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-ink">
                     Read case study
