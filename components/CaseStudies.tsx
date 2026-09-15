@@ -17,17 +17,17 @@ const caseStudies: {
 }[] = [
   {
     heading:
-      "Redesigned a Norwegian product after uncovering what users and the client actually needed.",
-    name: "Mosaic",
-    image: "/projects/mosaic.png",
-    href: "/projects/mosaic",
-  },
-  {
-    heading:
       "Designed an institute platform's public pages, student exam portal, and admin workspace.",
     name: "BrightRoot",
     image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
     href: "/projects/brightroot",
+  },
+  {
+    heading:
+      "Redesigned a Norwegian product after uncovering what users and the client actually needed.",
+    name: "Mosaic",
+    image: "/projects/mosaic.png",
+    href: "/projects/mosaic",
   },
 ];
 
