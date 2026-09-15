@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { ArrowUpRight } from "./icons";
+import { ArrowRight, ArrowUpRight } from "./icons";
 
 /* ------------------------------- Avatar -------------------------------- */
 export function Avatar({
@@ -98,6 +98,30 @@ export function ButtonGhost({
       className={`${btnBase} ${tones} ${className}`}
     >
       {children}
+    </Link>
+  );
+}
+
+/**
+ * A text link with a thick underline (border-bottom, not text-decoration,
+ * so the line runs under the trailing arrow too, not just the text) and an
+ * arrow that nudges forward on hover. Used for lower-emphasis CTAs like
+ * "Learn more" that shouldn't compete visually with a solid button.
+ */
+export function ButtonUnderline({
+  href,
+  children,
+  className = "",
+  external,
+}: Omit<BtnProps, "tone">) {
+  return (
+    <Link
+      href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className={`group inline-flex w-fit items-center gap-1.5 border-b-[3px] border-primary pb-1 text-lg font-medium text-ink transition-colors hover:border-primary-hover ${className}`}
+    >
+      {children}
+      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
     </Link>
   );
 }

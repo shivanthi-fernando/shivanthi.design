@@ -1,5 +1,5 @@
 import { site } from "@/lib/site";
-import { Avatar, ButtonGhost, ButtonPrimary } from "./ui";
+import { Avatar, ButtonUnderline } from "./ui";
 import Reveal from "./Reveal";
 
 export default function Hero() {
@@ -36,13 +36,10 @@ export default function Hero() {
             are intuitive, engaging, and designed around real user needs.
           </Reveal>
 
-          <Reveal delay={180} className="mt-9 flex flex-col items-stretch justify-start gap-3 sm:flex-row sm:items-center">
-            <ButtonPrimary href={site.bookingUrl} external className="w-full sm:w-auto">
+          <Reveal delay={180} className="mt-9">
+            <ButtonUnderline href={site.bookingUrl} external>
               Book a call
-            </ButtonPrimary>
-            <ButtonGhost href="/#projects" className="w-full sm:w-auto">
-              Check my projects
-            </ButtonGhost>
+            </ButtonUnderline>
           </Reveal>
         </div>
       </div>

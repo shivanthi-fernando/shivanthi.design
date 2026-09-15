@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getFolderPhotos } from "@/lib/photos";
-import { SectionHead } from "./ui";
+import { SectionHead, ButtonUnderline } from "./ui";
 import { ArrowRight } from "./icons";
 import Reveal from "./Reveal";
 import PolaroidGallery from "./PolaroidGallery";
@@ -53,13 +53,7 @@ export default async function About({ compact = false }: { compact?: boolean }) 
 
             {compact && (
               <Reveal delay={140} className="mt-7">
-                <Link
-                  href="/about"
-                  className="group inline-flex w-fit items-center gap-1.5 text-lg font-medium text-ink underline decoration-primary decoration-[3px] underline-offset-[6px] transition-colors hover:decoration-primary-hover"
-                >
-                  Learn more
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
+                <ButtonUnderline href="/about">Learn more</ButtonUnderline>
               </Reveal>
             )}
           </div>
