@@ -37,12 +37,12 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={180} className="mt-9">
-            {/* Same pill style + size as the navbar's "Book a call". */}
+            {/* Same pill style as the navbar's "Book a call", just a bit bigger. */}
             <a
               href={site.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block rounded-full bg-primary px-4 py-2 text-sm font-medium text-paper transition-all hover:-translate-y-0.5 hover:bg-primary-hover"
+              className="inline-block rounded-full bg-primary px-6 py-3 text-base font-medium text-paper transition-all hover:-translate-y-0.5 hover:bg-primary-hover"
             >
               Book a call
             </a>
