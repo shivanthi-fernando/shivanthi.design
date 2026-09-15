@@ -1,12 +1,16 @@
 import Image from "next/image";
 import { getFolderPhotos } from "@/lib/photos";
-import { SectionHead } from "./ui";
+import { SectionHead, ButtonGhost } from "./ui";
+import { ArrowRight } from "./icons";
 import Reveal from "./Reveal";
 import PolaroidGallery from "./PolaroidGallery";
 
 export default async function About({ compact = false }: { compact?: boolean }) {
-  const communityPhotos = await getFolderPhotos("community-learning");
-  const exploringPhotos = await getFolderPhotos("always-exploring");
+  // The compact (home-page preview) version skips the "Part of community" /
+  // "Always Exploring" subsections, so there's no need to read those photo
+  // folders for it.
+  const communityPhotos = compact ? [] : await getFolderPhotos("community-learning");
+  const exploringPhotos = compact ? [] : await getFolderPhotos("always-exploring");
 
   return (
     <section className={compact ? "pb-20 pt-4 sm:pb-28 sm:pt-6" : "pb-20 pt-28 sm:pb-28 sm:pt-32 md:pt-36"}>
@@ -31,6 +35,15 @@ export default async function About({ compact = false }: { compact?: boolean }) 
               to collaborate with teams, explore ideas, and turn complex
               problems into thoughtful experiences.
             </Reveal>
+
+            {compact && (
+              <Reveal delay={140} className="mt-7">
+                <ButtonGhost href="/about" className="w-fit">
+                  Learn more
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </ButtonGhost>
+              </Reveal>
+            )}
           </div>
 
           {/* Photo — same white polaroid frame as the gallery below */}
@@ -50,36 +63,40 @@ export default async function About({ compact = false }: { compact?: boolean }) 
           </Reveal>
         </div>
 
-        {/* Subsection A — Part of community */}
-        <Reveal delay={160} className="mt-16">
-          <h3 className="font-display text-xl font-semibold text-ink">
-            Part of community
-          </h3>
-          <p className="mt-1.5 max-w-2xl text-lg leading-relaxed text-muted">
-            I enjoy being part of the design community, attending meetups,
-            and connecting with fellow designers. I&rsquo;ve attended IxDF,
-            Friends of Figma, and Pixel Parlor meetups in Sri Lanka, where I
-            continue to learn, exchange ideas, and find inspiration.
-          </p>
-          <PolaroidGallery photos={communityPhotos} folder="community-learning" />
-        </Reveal>
+        {!compact && (
+          <>
+            {/* Subsection A — Part of community */}
+            <Reveal delay={160} className="mt-16">
+              <h3 className="font-display text-xl font-semibold text-ink">
+                Part of community
+              </h3>
+              <p className="mt-1.5 max-w-2xl text-lg leading-relaxed text-muted">
+                I enjoy being part of the design community, attending meetups,
+                and connecting with fellow designers. I&rsquo;ve attended IxDF,
+                Friends of Figma, and Pixel Parlor meetups in Sri Lanka, where I
+                continue to learn, exchange ideas, and find inspiration.
+              </p>
+              <PolaroidGallery photos={communityPhotos} folder="community-learning" />
+            </Reveal>
 
-        {/* Subsection B — Always Exploring */}
-        <Reveal delay={220} className="mt-16">
-          <h3 className="font-display text-xl font-semibold text-ink">
-            Always Exploring
-          </h3>
-          <p className="mt-1.5 max-w-2xl text-lg leading-relaxed text-muted">
-            I&rsquo;m naturally curious and enjoy discovering new things,
-            both within design and beyond it. I like exploring new ideas,
-            learning from different perspectives, and finding inspiration in
-            everyday experiences. There&rsquo;s always something new to
-            learn, and I enjoy keeping that curiosity alive through the
-            things I explore, the people I meet, and the experiences I come
-            across.
-          </p>
-          <PolaroidGallery photos={exploringPhotos} folder="always-exploring" />
-        </Reveal>
+            {/* Subsection B — Always Exploring */}
+            <Reveal delay={220} className="mt-16">
+              <h3 className="font-display text-xl font-semibold text-ink">
+                Always Exploring
+              </h3>
+              <p className="mt-1.5 max-w-2xl text-lg leading-relaxed text-muted">
+                I&rsquo;m naturally curious and enjoy discovering new things,
+                both within design and beyond it. I like exploring new ideas,
+                learning from different perspectives, and finding inspiration in
+                everyday experiences. There&rsquo;s always something new to
+                learn, and I enjoy keeping that curiosity alive through the
+                things I explore, the people I meet, and the experiences I come
+                across.
+              </p>
+              <PolaroidGallery photos={exploringPhotos} folder="always-exploring" />
+            </Reveal>
+          </>
+        )}
       </div>
     </section>
   );
