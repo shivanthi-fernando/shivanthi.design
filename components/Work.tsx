@@ -10,7 +10,7 @@ export default async function Work() {
         <SectionHead
           label="Work"
           title="Selected work, up close."
-          intro="A look at my design work, from interface explorations to full case studies covering how I approach research, decisions and outcomes."
+          intro="Some of the work shown here has been renamed or lightly altered due to client confidentiality. The thinking, process and quality behind it remain exactly as delivered."
         />
 
         <ProjectsTabs

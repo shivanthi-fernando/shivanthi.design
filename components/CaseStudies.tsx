@@ -34,9 +34,8 @@ export default function CaseStudies() {
   return (
     <div>
       <p className="max-w-2xl text-lg leading-relaxed text-muted">
-        Some of the work shown here has been renamed or lightly altered due
-        to client confidentiality. The thinking, process and quality behind
-        it remain exactly as delivered.
+        A look at my design work, from interface explorations to full case
+        studies covering how I approach research, decisions and outcomes.
       </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
