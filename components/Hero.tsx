@@ -1,5 +1,5 @@
 import { site } from "@/lib/site";
-import { Avatar, ButtonUnderline } from "./ui";
+import { Avatar } from "./ui";
 import Reveal from "./Reveal";
 
 export default function Hero() {
@@ -37,9 +37,15 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={180} className="mt-9">
-            <ButtonUnderline href={site.bookingUrl} external>
+            {/* Same pill style + size as the navbar's "Book a call". */}
+            <a
+              href={site.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full bg-primary px-4 py-2 text-sm font-medium text-paper transition-all hover:-translate-y-0.5 hover:bg-primary-hover"
+            >
               Book a call
-            </ButtonUnderline>
+            </a>
           </Reveal>
         </div>
       </div>
