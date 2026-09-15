@@ -25,8 +25,8 @@ export default function Header() {
   const navLinkClass = (active: boolean) =>
     `rounded-full px-2.5 py-1.5 text-sm transition-colors sm:px-3.5 ${
       active
-        ? "font-bold text-[#7C6BAA]"
-        : "font-medium text-[#9191A1] hover:font-bold hover:text-[#52525C]"
+        ? "font-bold text-[#52525C]"
+        : "font-medium text-[#9191A1] hover:font-bold hover:text-[#7C6BAA]"
     }`;
 
   return (
@@ -36,15 +36,15 @@ export default function Header() {
             default, gains a stronger glass effect once the page scrolls.
             On mobile it collapses to brand + a menu toggle only. */}
         <div
-          className={`flex items-center justify-between gap-4 rounded-full border px-3 transition-all duration-300 sm:px-4 ${
+          className={`flex items-center justify-between gap-4 rounded-full border px-2.5 transition-all duration-300 sm:px-3.5 ${
             scrolled
-              ? "border-line bg-card/80 py-2 shadow-sm backdrop-blur-md"
-              : "border-line/60 bg-card/50 py-3 backdrop-blur-sm"
+              ? "border-line bg-card/80 py-1.5 shadow-sm backdrop-blur-md"
+              : "border-line/60 bg-card/50 py-2.5 backdrop-blur-sm"
           }`}
         >
           {/* Brand */}
           <Link href="/" className="flex items-center rounded-full py-1 pl-1 pr-2">
-            <span className="font-script text-3xl font-semibold leading-none text-ink">
+            <span className="font-script text-4xl font-semibold leading-none text-ink">
               {site.shortName}
             </span>
           </Link>
@@ -119,8 +119,8 @@ export default function Header() {
                     aria-current={active ? "page" : undefined}
                     className={`rounded-lg px-3 py-2.5 text-sm transition-colors ${
                       active
-                        ? "font-bold text-[#7C6BAA]"
-                        : "font-medium text-[#9191A1] hover:font-bold hover:text-[#52525C]"
+                        ? "font-bold text-[#52525C]"
+                        : "font-medium text-[#9191A1] hover:font-bold hover:text-[#7C6BAA]"
                     }`}
                   >
                     {item.label}
