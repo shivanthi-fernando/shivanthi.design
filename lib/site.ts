@@ -27,9 +27,9 @@ export const site = {
 // via the "Learn more" link in the About section, not from this nav.
 export const nav = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/#about" },
   { label: "Projects", href: "/#projects" },
   { label: "Blogs", href: "/#blogs" },
-  { label: "About", href: "/#about" },
 ];
 
 export type Pastel = "butter" | "mint" | "lavender" | "peach" | "sky" | "blush";
