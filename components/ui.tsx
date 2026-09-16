@@ -118,7 +118,7 @@ export function ButtonUnderline({
     <Link
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={`group inline-flex w-fit items-center gap-1.5 border-b-[3px] border-primary pb-1 text-lg font-medium text-ink transition-colors hover:border-primary-hover ${className}`}
+      className={`group inline-flex w-fit items-center gap-1.5 border-b-[3px] border-primary pb-0.5 text-lg font-medium text-ink transition-colors hover:border-primary-hover ${className}`}
     >
       {children}
       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
