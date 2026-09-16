@@ -32,7 +32,7 @@ export default async function About({ compact = false }: { compact?: boolean }) 
           <SectionHead label="About" title="About me" />
         </div>
 
-        <div className="mt-7 flex flex-col-reverse gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
+        <div className="mt-10 flex flex-col-reverse gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
           {/* Narrative intro */}
           <div className="max-w-2xl">
             <Reveal as="p" className="text-lg leading-relaxed text-muted">

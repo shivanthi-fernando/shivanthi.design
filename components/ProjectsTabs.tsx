@@ -24,7 +24,7 @@ export default function ProjectsTabs({
     }`;
 
   return (
-    <div className="mt-16">
+    <div className="mt-10">
       {/* Hidden for now (not deleted) — only one tab has real content so far. */}
       <div className="!hidden inline-flex items-center gap-1 rounded-full bg-paper-2 p-1">
         <button type="button" className={tabClass("design")} onClick={() => setActive("design")}>
