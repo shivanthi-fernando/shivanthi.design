@@ -36,8 +36,9 @@ export default async function About({ compact = false }: { compact?: boolean }) 
           {/* Narrative intro */}
           <div className="max-w-2xl">
             <Reveal as="p" className="text-lg leading-relaxed text-muted">
-              I&rsquo;m a UX Designer who enjoys turning ideas into digital
-              experiences that feel natural to use. My journey into design
+              I&rsquo;m a UX Designer based in Sri Lanka, who enjoys turning
+              ideas into digital experiences that feel natural to use. My
+              journey into design
               began with a curiosity about how people interact with
               products, leading me to learn UX design and transition into a
               career I&rsquo;m passionate about.
