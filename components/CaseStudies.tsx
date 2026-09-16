@@ -40,7 +40,7 @@ const caseStudies: {
     image: "/projects/Mosaic/Mosaic_Thumbnail.png",
     href: "/projects/mosaic",
     disabled: true,
-    gradient: "from-peach to-blush",
+    gradient: "from-sky to-lavender",
   },
 ];
 
@@ -96,7 +96,7 @@ export default function CaseStudies() {
                     </span>
                   )}
                   {cs.disabled && (
-                    <span className="inline-flex items-center rounded-full bg-butter px-3.5 py-1.5 text-xs font-semibold text-butter-ink">
+                    <span className="inline-flex items-center rounded-full bg-neutral-200 px-3.5 py-1.5 text-xs font-semibold text-neutral-600">
                       Coming soon
                     </span>
                   )}
