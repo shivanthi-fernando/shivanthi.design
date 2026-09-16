@@ -14,7 +14,7 @@ export default async function About({ compact = false }: { compact?: boolean }) 
   const exploringPhotos = compact ? [] : await getFolderPhotos("always-exploring");
 
   return (
-    <section className={compact ? "pb-20 pt-4 sm:pb-28 sm:pt-6" : "pb-20 pt-28 sm:pb-28 sm:pt-32 md:pt-36"}>
+    <section className={compact ? "pb-20 pt-4 sm:pb-28 sm:pt-6" : "pb-20 pt-10 sm:pb-28 sm:pt-14 md:pt-16"}>
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
         {!compact && (
           <Reveal>

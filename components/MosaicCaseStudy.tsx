@@ -18,7 +18,7 @@ const palette = [
 
 export default function MosaicCaseStudy() {
   return (
-    <section className="pb-20 pt-28 sm:pb-28 sm:pt-32 md:pt-36">
+    <section className="pb-20 pt-10 sm:pb-28 sm:pt-14 md:pt-16">
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
         <Reveal>
           <Link

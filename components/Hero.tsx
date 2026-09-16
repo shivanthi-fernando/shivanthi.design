@@ -4,7 +4,7 @@ import Reveal from "./Reveal";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pb-0 pt-28 sm:pt-32 md:pt-36">
+    <section className="relative overflow-hidden pb-0 pt-10 sm:pt-14 md:pt-16">
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
         <div className="max-w-4xl text-left">
           <Reveal>
