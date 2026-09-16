@@ -48,17 +48,13 @@ export default async function About({ compact = false }: { compact?: boolean }) 
               Today, I work on global products at 99x and support clients
               and teams outside my main role, helping them solve real
               problems and bring ideas to life. I enjoy turning user needs
-              into thoughtful, intuitive experiences.
-            </Reveal>
-
-            <Reveal as="p" delay={140} className="mt-5 text-lg leading-relaxed text-muted">
-              Have a project or idea in mind? I&rsquo;d love to hear about
-              it. Let&rsquo;s have a chat and explore how we can work
-              together.
+              into thoughtful, intuitive experiences, and I&rsquo;d love to
+              collaborate with you, exchange ideas, and create something
+              meaningful together.
             </Reveal>
 
             {compact && (
-              <Reveal delay={200} className="mt-7">
+              <Reveal delay={140} className="mt-7">
                 <ButtonUnderline href="/about">Learn more</ButtonUnderline>
               </Reveal>
             )}
