@@ -12,7 +12,7 @@ export default async function Work() {
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
         <SectionHead
           label="Work"
-          title="Selected work, up close."
+          title="Projects"
           intro="Some of the work shown here has been renamed or lightly altered due to client confidentiality. The thinking, process and quality behind it remain exactly as delivered."
         />
 
