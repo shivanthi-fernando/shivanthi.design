@@ -95,7 +95,7 @@ export default function Header() {
             default, gains a stronger glass effect once the page scrolls.
             On mobile it collapses to brand + a menu toggle only. */}
         <div
-          className={`flex items-center justify-between gap-4 rounded-full border p-1 transition-all duration-300 ${
+          className={`flex items-center justify-between gap-4 rounded-full border px-2 py-1 transition-all duration-300 ${
             scrolled
               ? "border-line bg-card/65 shadow-sm backdrop-blur-xl"
               : "border-line/60 bg-card/35 backdrop-blur-lg"
