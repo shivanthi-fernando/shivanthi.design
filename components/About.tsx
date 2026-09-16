@@ -61,7 +61,7 @@ export default async function About({ compact = false }: { compact?: boolean }) 
           </div>
 
           {/* Photo — same white polaroid frame as the gallery below */}
-          <Reveal delay={40} className="shrink-0 self-center">
+          <Reveal delay={40} className="shrink-0 self-center lg:-mt-6">
             <div className="w-40 rotate-[10deg] bg-white p-2 pb-6 shadow-[0_12px_24px_-10px_rgba(26,25,23,0.35)] transition-transform duration-300 hover:rotate-0 hover:scale-105 hover:shadow-[0_16px_30px_-10px_rgba(26,25,23,0.45)] sm:w-48">
               <div className="relative aspect-[4/5] overflow-hidden bg-line">
                 <Image
