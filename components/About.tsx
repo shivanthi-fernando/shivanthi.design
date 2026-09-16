@@ -36,20 +36,24 @@ export default async function About({ compact = false }: { compact?: boolean }) 
           {/* Narrative intro */}
           <div className="max-w-2xl">
             <Reveal as="p" className="text-lg leading-relaxed text-muted">
-              I&rsquo;m a UX Designer based in Sri Lanka, who enjoys turning
-              ideas into digital experiences that feel natural to use. My
-              journey into design
-              began with a curiosity about how people interact with
-              products, leading me to learn UX design and transition into a
-              career I&rsquo;m passionate about.
+              I&rsquo;m a UX Designer based in Sri Lanka who enjoys turning
+              ideas into digital experiences that feel natural to use. While
+              working as a developer, I became curious about how people
+              interact with products. That curiosity led me to explore UX
+              design, and I soon realized it was something I was truly
+              passionate about.
             </Reveal>
 
             <Reveal as="p" delay={80} className="mt-5 text-lg leading-relaxed text-muted">
-              Along the way, I&rsquo;ve had the opportunity to work on
-              different digital products and grow through real-world
-              challenges. My experience at 99x has given me the opportunity
-              to collaborate with teams, explore ideas, and turn complex
-              problems into thoughtful experiences.
+              Today, I work on global products at 99x and also support
+              clients and teams outside my main role, helping them solve
+              real problems and bring their ideas to life. From
+              understanding user needs and exploring solutions to refining
+              designs and contributing to the product&rsquo;s development, I
+              enjoy working through the details that make a product useful,
+              intuitive, and meaningful. I&rsquo;m always looking for
+              opportunities to collaborate, solve real problems, and create
+              products that people love to use.
             </Reveal>
 
             {compact && (
