@@ -151,6 +151,26 @@ export function ImageIcon(props: IconProps) {
   );
 }
 
+export function FileTextIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden {...props}>
+      <path
+        d="M6 3.5h8.5L18 7v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path d="M14 3.5V7h4" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+      <path
+        d="M8 12h8M8 15.5h8M8 8.5h3"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export function InfoIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden {...props}>
