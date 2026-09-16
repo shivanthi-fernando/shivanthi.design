@@ -32,8 +32,9 @@ export default function Hero() {
 
           <Reveal as="p" delay={120} className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
             Bringing clarity to digital products through thoughtful UX, rapid
-            prototyping, and emerging technology, creating experiences that
-            are intuitive, engaging, and designed around real user needs.
+            prototyping, and AI-powered workflows. Combining human-centered
+            design with modern technology to create experiences that are
+            intuitive, engaging, and built around real user needs.
           </Reveal>
 
           <Reveal delay={180} className="mt-9">

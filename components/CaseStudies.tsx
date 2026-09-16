@@ -41,7 +41,8 @@ const caseStudies: {
 export default function CaseStudies() {
   return (
     <div>
-      <p className="max-w-2xl text-lg leading-relaxed text-muted">
+      {/* Hidden for now (not deleted). */}
+      <p className="hidden max-w-2xl text-lg leading-relaxed text-muted">
         A look at my design work, covering how I approach research,
         decisions and outcomes.
       </p>
