@@ -5,8 +5,8 @@ import Reveal from "./Reveal";
 
 /**
  * Writing — a list of the UX psychology mini-series published on Medium.
- * Styled after bolsdesign.co's "Articles I like" list: a plain, hairline-
- * divided row list — title + external-link arrow, gray outlined icon
+ * Styled after bolsdesign.co's "Articles I like" list: a plain row list
+ * (no divider lines) — title + external-link arrow, gray outlined icon
  * instead of a thumbnail image. On bolsdesign.co, hovering a row pops a
  * description card out to the side; here the same hover reveal happens
  * directly under the hovered title instead, via CSS only (group-hover /
@@ -27,16 +27,16 @@ export default function Writing() {
           intro="Thoughts, learnings, and small discoveries from my ongoing journey as a designer."
         />
 
-        <div className="mt-10 divide-y divide-line">
+        <div className="mt-10">
           {articles.map((article, i) => (
             <Reveal key={article.href} delay={(i % 3) * 80}>
               <a
                 href={article.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block rounded-xl px-3 transition-colors hover:bg-neutral-200/70 focus-visible:bg-neutral-200/70"
+                className="group block rounded-xl px-3 transition-colors hover:bg-neutral-100 focus-visible:bg-neutral-100"
               >
-                <div className="flex items-center gap-4 py-4">
+                <div className="flex items-center gap-4 py-2">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-line-strong text-muted">
                     <FileTextIcon className="h-5 w-5" />
                   </span>
@@ -52,7 +52,7 @@ export default function Writing() {
                     under this row's own title on hover/focus. */}
                 <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
                   <div className="overflow-hidden">
-                    <p className="pb-4 pl-[3.75rem] pr-8 text-sm leading-relaxed text-muted">
+                    <p className="pb-2 pl-[3.75rem] pr-8 text-sm leading-relaxed text-muted">
                       {article.desc}
                     </p>
                   </div>
