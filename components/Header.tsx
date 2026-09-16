@@ -17,7 +17,14 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      const isScrolled = window.scrollY > 12;
+      setScrolled(isScrolled);
+      // Scrolling back up to the very top hides the header again — close
+      // the mobile menu with it so it can't be left open (and unclickable,
+      // since the hidden header goes pointer-events-none) behind the scenes.
+      if (!isScrolled) setMenuOpen(false);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -78,7 +85,11 @@ export default function Header() {
     }`;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 pt-4">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 pt-4 transition-all duration-300 ${
+        scrolled ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"
+      }`}
+    >
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
         {/* Pill holding brand + nav links on larger screens — visible by
             default, gains a stronger glass effect once the page scrolls.
