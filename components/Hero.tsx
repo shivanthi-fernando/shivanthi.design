@@ -37,7 +37,18 @@ export default function Hero() {
             intuitive, engaging, and built around real user needs.
           </Reveal>
 
-          <Reveal delay={180} className="mt-9 flex flex-wrap items-center gap-3">
+          <Reveal as="p" delay={150} className="mt-3 max-w-xl text-lg leading-relaxed text-muted">
+            Drop me a line at{" "}
+            <a
+              href={`mailto:${site.email}`}
+              className="font-medium text-ink underline decoration-line-strong decoration-2 underline-offset-4 transition-colors hover:decoration-primary"
+            >
+              {site.email}
+            </a>{" "}
+            or
+          </Reveal>
+
+          <Reveal delay={180} className="mt-6">
             {/* Same pill style as the navbar's "Book a call", just a bit bigger. */}
             <a
               href={site.bookingUrl}
@@ -46,13 +57,6 @@ export default function Hero() {
               className="inline-block rounded-full bg-primary px-6 py-3 text-base font-medium text-paper transition-all hover:-translate-y-0.5 hover:bg-primary-hover"
             >
               Book a call
-            </a>
-            {/* Secondary — same shape, outlined instead of filled */}
-            <a
-              href={`mailto:${site.email}`}
-              className="inline-block rounded-full border border-line-strong bg-card px-6 py-3 text-base font-medium text-ink transition-all hover:-translate-y-0.5 hover:border-primary"
-            >
-              {site.email}
             </a>
           </Reveal>
         </div>
