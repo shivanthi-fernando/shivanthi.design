@@ -45,16 +45,12 @@ export default function Hero() {
             >
               {site.email}
             </a>{" "}
-            or
-          </Reveal>
-
-          <Reveal delay={180} className="mt-6">
-            {/* Same pill style as the navbar's "Book a call", just a bit bigger. */}
+            or{" "}
             <a
               href={site.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block rounded-full bg-primary px-6 py-3 text-base font-medium text-paper transition-all hover:-translate-y-0.5 hover:bg-primary-hover"
+              className="font-medium text-ink underline decoration-line-strong decoration-2 underline-offset-4 transition-colors hover:decoration-primary"
             >
               Book a call
             </a>
