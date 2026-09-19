@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import { Avatar } from "./ui";
+import { CopyEmail } from "./CopyEmail";
 import Reveal from "./Reveal";
 
 export default function Hero() {
@@ -39,12 +40,10 @@ export default function Hero() {
 
           <Reveal as="p" delay={150} className="mt-3 max-w-xl text-lg leading-relaxed text-muted">
             Drop me a line at{" "}
-            <a
-              href={`mailto:${site.email}`}
+            <CopyEmail
+              email={site.email}
               className="font-medium text-ink underline decoration-line-strong decoration-2 underline-offset-4 transition-colors hover:decoration-primary"
-            >
-              {site.email}
-            </a>{" "}
+            />{" "}
             or{" "}
             <a
               href={site.bookingUrl}
