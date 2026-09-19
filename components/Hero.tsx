@@ -1,6 +1,7 @@
 import { site } from "@/lib/site";
 import { Avatar } from "./ui";
 import { CopyEmail } from "./CopyEmail";
+import { ArrowUpRight } from "./icons";
 import Reveal from "./Reveal";
 
 export default function Hero() {
@@ -22,7 +23,7 @@ export default function Hero() {
             </div>
           </Reveal>
 
-          <Reveal as="h1" delay={60} className="mt-6 text-4xl font-semibold leading-[1.3] tracking-tight sm:text-5xl md:text-[3.6rem]">
+          <Reveal as="h1" delay={60} className="mt-6 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl md:text-[3.6rem]">
             Turning ideas into{" "}
             <span className="hl bg-butter" style={{ padding: 0, borderRadius: 0 }}>
               experiences
@@ -31,27 +32,28 @@ export default function Hero() {
             that feel natural to use.
           </Reveal>
 
-          <Reveal as="p" delay={120} className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            Bringing clarity to digital products through thoughtful UX, rapid
+          <Reveal as="p" delay={120} className="mt-6 max-w-xl text-lg leading-snug text-muted">
+            I bring clarity to digital products through thoughtful UX, rapid
             prototyping, and AI-powered workflows. Combining human-centered
             design with modern technology to create experiences that are
             intuitive, engaging, and built around real user needs.
           </Reveal>
 
-          <Reveal as="p" delay={150} className="mt-3 max-w-xl text-lg leading-relaxed text-muted">
+          <Reveal as="p" delay={150} className="mt-3 max-w-xl text-lg leading-snug text-muted">
             Drop me a line at{" "}
             <CopyEmail
               email={site.email}
-              className="font-medium text-ink underline decoration-line-strong decoration-2 underline-offset-4 transition-colors hover:decoration-primary"
+              className="border-b-2 border-line-strong pb-0.5 font-medium text-ink transition-colors hover:border-primary"
             />{" "}
             or{" "}
             <a
               href={site.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-ink underline decoration-line-strong decoration-2 underline-offset-4 transition-colors hover:decoration-primary"
+              className="group inline-flex items-center gap-1.5 border-b-2 border-line-strong pb-0.5 font-medium text-ink transition-colors hover:border-primary"
             >
               Book a call
+              <ArrowUpRight className="h-4 w-4 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
           </Reveal>
         </div>

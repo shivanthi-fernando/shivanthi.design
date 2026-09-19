@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { CheckIcon, CopyIcon } from "./icons";
 
 /**
  * Renders an email address as a click-to-copy control (rather than a
- * mailto: link) — clicking copies it to the clipboard and briefly swaps
- * the label to "Copied!" as feedback. Used inline within running text, so
- * it's a <button> styled to match the surrounding underlined-link look.
+ * mailto: link) — clicking copies it to the clipboard. The address text
+ * itself never changes; instead a small icon next to it swaps from a
+ * copy glyph to a checkmark as feedback, then reverts after a beat.
+ * Used inline within running text, so it's a <button> styled to match
+ * the surrounding underlined-link look.
  */
 export function CopyEmail({ email, className = "" }: { email: string; className?: string }) {
   const [copied, setCopied] = useState(false);
@@ -24,8 +27,17 @@ export function CopyEmail({ email, className = "" }: { email: string; className?
   };
 
   return (
-    <button type="button" onClick={handleCopy} className={className}>
-      {copied ? "Copied!" : email}
+    <button
+      type="button"
+      onClick={handleCopy}
+      className={`group inline-flex items-center gap-1.5 ${className}`}
+    >
+      {email}
+      {copied ? (
+        <CheckIcon className="h-4 w-4 shrink-0 text-primary" />
+      ) : (
+        <CopyIcon className="h-4 w-4 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      )}
     </button>
   );
 }
