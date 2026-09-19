@@ -32,14 +32,14 @@ export default function Hero() {
             that feel natural to use.
           </Reveal>
 
-          <Reveal as="p" delay={120} className="mt-6 max-w-xl text-lg leading-snug text-muted">
+          <Reveal as="p" delay={120} className="mt-6 max-w-xl text-lg leading-normal text-muted">
             I bring clarity to digital products through thoughtful UX, rapid
             prototyping, and AI-powered workflows. Combining human-centered
             design with modern technology to create experiences that are
             intuitive, engaging, and built around real user needs.
           </Reveal>
 
-          <Reveal as="p" delay={150} className="mt-3 max-w-xl text-lg leading-snug text-muted">
+          <Reveal as="p" delay={150} className="mt-3 max-w-xl text-lg leading-normal text-muted">
             Drop me a line at{" "}
             <CopyEmail
               email={site.email}
