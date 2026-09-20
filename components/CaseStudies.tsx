@@ -20,10 +20,10 @@ import { ArrowUpRight, ImageIcon } from "./icons";
 const caseStudies: {
   heading: string;
   name: string;
-  /** Short category/type line shown between the heading and the CTA,
-   *  e.g. "Landing page and SaaS design · Education". Optional — cards
-   *  without one just skip that line. */
-  category?: string;
+  /** Category/type tags shown as pills between the heading and the CTA,
+   *  e.g. ["Landing page and SaaS design", "Education"]. Optional —
+   *  cards without any just skip that row. */
+  categories?: string[];
   image: string | null;
   href: string | null;
   disabled?: boolean;
@@ -31,7 +31,7 @@ const caseStudies: {
   {
     heading: "Turned fragmented education workflows into one connected experience",
     name: "BrightRoot",
-    category: "Landing page and SaaS design · Education",
+    categories: ["Landing page and SaaS design", "Education"],
     image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
     href: "/projects/brightroot",
   },
@@ -63,17 +63,26 @@ export default function CaseStudies() {
           }`;
 
           const content = (
-            <div className="flex flex-col-reverse sm:flex-row sm:items-start">
+            <div className="flex flex-col-reverse sm:flex-row sm:items-stretch">
               {/* Text — name, heading, CTA — on the left, 1/3 of the row,
                   aligned to the top. Its own padding, since the card
                   itself has none (so the image on the right can sit
                   flush against the card edge). */}
-              <div className="min-w-0 p-5 sm:w-1/3 sm:py-6">
+              <div className="flex min-w-0 flex-col p-5 sm:w-1/3 sm:py-6">
                 <h4 className="font-display text-base font-semibold text-ink">{cs.heading}</h4>
-                {cs.category && (
-                  <p className="mt-2 text-sm font-normal text-muted">{cs.category}</p>
+                {cs.categories && cs.categories.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {cs.categories.map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center rounded-full bg-neutral-100 px-2.5 py-1 text-xs font-medium text-muted"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 )}
-                <span className="mt-4 inline-flex items-center gap-1.5 border-b-2 border-line-strong pb-0.5 text-sm font-medium text-ink transition-colors group-hover:border-primary">
+                <span className="mt-4 inline-flex w-fit items-center gap-1.5 border-b-2 border-line-strong pb-0.5 text-sm font-medium text-ink transition-colors group-hover:border-primary sm:mt-auto">
                   Read case study
                   <ArrowUpRight className="h-4 w-4 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>
