@@ -15,7 +15,10 @@ export default async function DesignsCarousel() {
   }));
 
   return (
-    <section className="pb-20 pt-0 sm:pb-28">
+    // Hidden at lg+ — Hero renders its own vertical carousel there instead,
+    // to the right of the content. Below lg, this full-bleed horizontal
+    // strip is still what shows.
+    <section className="pb-20 pt-0 sm:pb-28 lg:hidden">
       <Reveal>
         <DraggableMarquee items={items} speed={1} gap={44} className="py-10" showArrows={false} />
       </Reveal>
