@@ -21,7 +21,7 @@ const caseStudies: {
   heading: string;
   name: string;
   /** Short category/type line shown between the heading and the CTA,
-   *  e.g. "Education · Landing page and SaaS design". Optional — cards
+   *  e.g. "Landing page and SaaS design · Education". Optional — cards
    *  without one just skip that line. */
   category?: string;
   image: string | null;
@@ -31,7 +31,7 @@ const caseStudies: {
   {
     heading: "Turned fragmented education workflows into one connected experience",
     name: "BrightRoot",
-    category: "Education · Landing page and SaaS design",
+    category: "Landing page and SaaS design · Education",
     image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
     href: "/projects/brightroot",
   },
