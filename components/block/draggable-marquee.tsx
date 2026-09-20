@@ -27,17 +27,14 @@ type DraggableMarqueeProps = {
   showArrows?: boolean;
   /** Click an item to open it full-screen. */
   lightbox?: boolean;
-  /** Scroll sideways (default) or in a top-to-bottom column. */
-  direction?: "horizontal" | "vertical";
 };
 
 /**
  * DraggableMarquee — an infinitely-looping strip of images that auto-scrolls
- * (sideways by default, or top-to-bottom when `direction="vertical"`) and
- * can be grabbed and dragged by hand. Built from scratch (only the demo
- * call-site was provided, not an implementation): the item set is rendered
- * three times back-to-back and the scroll position is wrapped back into
- * range every frame, so the loop point is invisible in either drag
+ * sideways and can be grabbed and dragged by hand. Built from scratch (only
+ * the demo call-site was provided, not an implementation): the item set is
+ * rendered three times back-to-back and the scroll position is wrapped back
+ * into range every frame, so the loop point is invisible in either drag
  * direction. Auto-scroll pauses for the duration of a drag (or a nudge from
  * the arrow buttons) and picks back up — at the dragged-to position — the
  * instant it ends.
@@ -56,9 +53,7 @@ export function DraggableMarquee({
   hoverScale = 1.12,
   showArrows = true,
   lightbox = true,
-  direction = "horizontal",
 }: DraggableMarqueeProps) {
-  const isVertical = direction === "vertical";
   const setRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const draggingRef = useRef(false);
@@ -76,20 +71,18 @@ export function DraggableMarquee({
   }, []);
 
   // Measure one full set of items so we know how far to scroll before
-  // wrapping back to the start of the loop — width for a horizontal strip,
-  // height for a vertical column.
+  // wrapping back to the start of the loop.
   useEffect(() => {
     const el = setRef.current;
     if (!el) return;
     const measure = () => {
-      const box = el.getBoundingClientRect();
-      loopWidthRef.current = isVertical ? box.height : box.width;
+      loopWidthRef.current = el.getBoundingClientRect().width;
     };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [items, gap, isVertical]);
+  }, [items, gap]);
 
   useEffect(() => {
     let rafId: number;
@@ -149,7 +142,7 @@ export function DraggableMarquee({
     <div
       key={setIndex}
       ref={setIndex === 0 ? setRef : undefined}
-      className={`flex shrink-0 ${isVertical ? "flex-col" : ""}`}
+      className="flex shrink-0"
       style={{ gap }}
     >
       {items.map((item) => {
@@ -195,16 +188,16 @@ export function DraggableMarquee({
     <div>
       <div className={`overflow-hidden ${className}`}>
         <motion.div
-          className={`flex cursor-grab active:cursor-grabbing ${isVertical ? "flex-col" : ""}`}
-          style={isVertical ? { y: x, gap } : { x, gap }}
-          drag={isVertical ? "y" : "x"}
+          className="flex cursor-grab active:cursor-grabbing"
+          style={{ x, gap }}
+          drag="x"
           dragMomentum={false}
           onDragStart={() => {
             draggingRef.current = true;
             dragDistanceRef.current = 0;
           }}
           onDrag={(_, info) => {
-            dragDistanceRef.current += Math.abs(isVertical ? info.delta.y : info.delta.x);
+            dragDistanceRef.current += Math.abs(info.delta.x);
           }}
           onDragEnd={() => {
             draggingRef.current = false;
@@ -217,24 +210,24 @@ export function DraggableMarquee({
       </div>
 
       {showArrows && (
-        <div className={`flex items-center justify-center gap-3 ${isVertical ? "mt-0 flex-col" : "mt-3"}`}>
+        <div className="mt-3 flex items-center justify-center gap-3">
           <button
             type="button"
             onClick={() => nudge(-1)}
-            aria-label={isVertical ? "Scroll up" : "Scroll left"}
+            aria-label="Scroll left"
             className="grid h-10 w-10 place-items-center rounded-full border border-[#e2e2e2] bg-card text-ink transition-colors hover:border-[#796BA6] hover:text-[#796BA6]"
           >
-            <svg viewBox="0 0 24 24" fill="none" className={`h-4 w-4 ${isVertical ? "-rotate-90" : "rotate-180"}`}>
+            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 rotate-180">
               <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
           <button
             type="button"
             onClick={() => nudge(1)}
-            aria-label={isVertical ? "Scroll down" : "Scroll right"}
+            aria-label="Scroll right"
             className="grid h-10 w-10 place-items-center rounded-full border border-[#e2e2e2] bg-card text-ink transition-colors hover:border-[#796BA6] hover:text-[#796BA6]"
           >
-            <svg viewBox="0 0 24 24" fill="none" className={`h-4 w-4 ${isVertical ? "rotate-90" : ""}`}>
+            <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
               <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
