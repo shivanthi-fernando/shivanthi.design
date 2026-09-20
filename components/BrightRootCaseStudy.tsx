@@ -23,7 +23,7 @@ export default function BrightRootCaseStudy() {
     <CaseStudyHero
       image="/projects/BrightRoot/BrightRoot_Thumbnail.png"
       label="BrightRoot"
-      title="BrightRoot"
+      title="Turned fragmented education workflows into one connected experience"
       intro="Designing an institute platform and student exam experience. BrightRoot connects institutes with students through public institute pages, student assessments, and administrative tools."
     >
       <CaseStudyFacts role="UX/UI Designer" projectType="Client-requested product design" />

@@ -6,13 +6,13 @@ import { ArrowRight } from "./icons";
 import Reveal from "./Reveal";
 
 /**
- * Shared case-study page shell: a hero image up top, kept within the
- * same max-w-5xl content width as the rest of the site (not full-bleed),
- * with the content (back link, title, and everything passed as children)
- * sitting in a rounded-top panel that overlaps the image's bottom edge —
- * the sliding-card effect from shivanthi.framer.website's case-study
- * pages, just inset to match this site's own content width instead of
- * running edge-to-edge.
+ * Shared case-study page shell: "Back to Projects", then a hero image
+ * kept within the same max-w-5xl content width as the rest of the site
+ * (not full-bleed), with the content (title, and everything passed as
+ * children) sitting in a rounded-top panel that overlaps the image's
+ * bottom edge and scrolls over it — the image itself is sticky, so it
+ * stays put while the panel slides up over it, mirroring
+ * shivanthi.framer.website's case-study pages.
  */
 export function CaseStudyHero({
   image,
@@ -30,11 +30,23 @@ export function CaseStudyHero({
   return (
     <section className="pb-20 pt-10 sm:pb-28 sm:pt-14 md:pt-16">
       <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
-        {/* aspect-[1728/1202] matches the case study cover images' own
-            dimensions, so object-cover has nothing to crop/zoom into —
-            a viewport-height-based box was forcing a much wider ratio
-            than the source images, which is what caused the zoom. */}
-        <div className="relative aspect-[1728/1202] max-h-[70vh] w-full overflow-hidden rounded-2xl">
+        <Reveal>
+          <Link
+            href="/#projects"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+          >
+            <ArrowRight className="h-3.5 w-3.5 rotate-180" />
+            Back to Projects
+          </Link>
+        </Reveal>
+
+        {/* Sticky — pinned at the top of the viewport while the content
+            panel below (its sibling, much taller) scrolls up over it.
+            aspect-[1728/601] is exactly double the source images' own
+            1728/1202 ratio, so combined with object-top this crops
+            down to just the top half of the image instead of showing
+            it in full. */}
+        <div className="sticky top-0 z-0 mt-6 aspect-[1728/601] max-h-[45vh] w-full overflow-hidden rounded-2xl">
           <Image
             src={image}
             alt=""
@@ -45,20 +57,8 @@ export function CaseStudyHero({
           />
         </div>
 
-        <div className="relative -mt-10 rounded-t-[32px] bg-paper pt-10 sm:-mt-14 sm:rounded-t-[40px] sm:pt-14">
-          <Reveal>
-            <Link
-              href="/#projects"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
-            >
-              <ArrowRight className="h-3.5 w-3.5 rotate-180" />
-              Back to Projects
-            </Link>
-          </Reveal>
-
-          <div className="mt-6">
-            <SectionHead label={label} title={title} intro={intro} />
-          </div>
+        <div className="relative z-10 -mt-6 ml-4 rounded-t-[32px] bg-paper pt-10 sm:-mt-8 sm:ml-8 sm:rounded-t-[40px] sm:pt-14">
+          <SectionHead label={label} title={title} intro={intro} />
 
           <div className="max-w-2xl">{children}</div>
         </div>
