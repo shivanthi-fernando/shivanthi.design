@@ -36,8 +36,11 @@ export default function Writing() {
                 rel="noopener noreferrer"
                 className="group block rounded-xl px-3 transition-colors hover:bg-neutral-100 focus-visible:bg-neutral-100"
               >
-                <div className="flex items-center gap-4 py-2">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-line-strong text-muted">
+                {/* Icon + title + arrow — a fixed-height row on its own, so
+                    the title's position never shifts when the description
+                    below expands open on hover. */}
+                <div className="flex items-center gap-4 pt-2 pb-1">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-neutral-300 text-muted">
                     <FileTextIcon className="h-5 w-5" />
                   </span>
 
@@ -49,10 +52,12 @@ export default function Writing() {
                 </div>
 
                 {/* Description — collapsed to 0 height, expands open right
-                    under this row's own title on hover/focus. */}
+                    under this row's own title on hover/focus. The negative
+                    top margin pulls it up close under the title without
+                    touching the title row itself (which would move it). */}
                 <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
                   <div className="overflow-hidden">
-                    <p className="pb-2 pl-[3.75rem] pr-8 text-sm leading-relaxed text-muted">
+                    <p className="-mt-2 pb-2 pl-[3.75rem] pr-8 text-sm leading-relaxed text-muted">
                       {article.desc}
                     </p>
                   </div>
