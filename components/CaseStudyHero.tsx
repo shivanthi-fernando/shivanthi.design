@@ -57,10 +57,15 @@ export function CaseStudyHero({
           />
         </div>
 
-        <div className="relative z-10 -mt-6 ml-4 rounded-t-[32px] bg-paper pt-10 sm:-mt-8 sm:ml-8 sm:rounded-t-[40px] sm:pt-14">
-          <SectionHead label={label} title={title} intro={intro} />
+        <div className="relative z-10 -mt-6 rounded-t-[32px] bg-paper pt-10 sm:-mt-8 sm:rounded-t-[40px] sm:pt-14">
+          {/* Left padding here, not on the card itself — the card keeps
+              the image's full width, only the text inside it is inset
+              from the card's own edge. */}
+          <div className="pl-4 sm:pl-8">
+            <SectionHead label={label} title={title} intro={intro} />
 
-          <div className="max-w-2xl">{children}</div>
+            <div className="max-w-2xl">{children}</div>
+          </div>
         </div>
       </div>
     </section>
