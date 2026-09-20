@@ -77,12 +77,16 @@ export default function Header() {
     return href === "/" ? activeSection === "" : activeSection === href.replace("/#", "");
   };
 
+  // Selected and hover swapped colors per feedback: the active tab now
+  // takes the color hover used to have (#7C6BAA), and hover takes what
+  // the active tab used to have (#52525C) — no pill background either
+  // way. Shared between desktop and mobile nav so they can't drift apart.
+  const navColorClass = (active: boolean) =>
+    active
+      ? "font-bold text-[#7C6BAA]"
+      : "font-medium text-[#9191A1] hover:text-[#52525C]";
   const navLinkClass = (active: boolean) =>
-    `rounded-full px-2.5 py-1.5 text-sm transition-colors sm:px-3.5 ${
-      active
-        ? "font-bold text-[#52525C]"
-        : "font-medium text-[#9191A1] hover:text-[#7C6BAA]"
-    }`;
+    `rounded-full px-2.5 py-1.5 text-sm transition-colors sm:px-3.5 ${navColorClass(active)}`;
 
   return (
     <header
@@ -177,11 +181,7 @@ export default function Header() {
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     aria-current={active ? "page" : undefined}
-                    className={`rounded-lg px-3 py-2.5 text-sm transition-colors ${
-                      active
-                        ? "font-bold text-[#52525C]"
-                        : "font-medium text-[#9191A1] hover:text-[#7C6BAA]"
-                    }`}
+                    className={`rounded-lg px-3 py-2.5 text-sm transition-colors ${navColorClass(active)}`}
                   >
                     {item.label}
                   </Link>

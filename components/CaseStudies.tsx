@@ -19,10 +19,6 @@ const caseStudies: {
   image: string | null;
   href: string | null;
   disabled?: boolean;
-  /** Backdrop the thumbnail floats on, echoing yards.framer.website's
-   *  colored-gradient project cards — drawn from the site's own pastel
-   *  palette rather than copying their blue/purple hues directly. */
-  gradient: string;
 }[] = [
   {
     heading:
@@ -31,7 +27,6 @@ const caseStudies: {
     image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
     href: "/projects/brightroot",
     disabled: true,
-    gradient: "from-sky to-lavender",
   },
   {
     heading:
@@ -40,7 +35,6 @@ const caseStudies: {
     image: "/projects/Mosaic/Mosaic_Thumbnail.png",
     href: "/projects/mosaic",
     disabled: true,
-    gradient: "from-sky to-lavender",
   },
 ];
 
@@ -56,31 +50,27 @@ export default function CaseStudies() {
       <div className="mt-6 grid gap-8 sm:grid-cols-2">
         {caseStudies.map((cs, i) => {
           const isLive = Boolean(cs.href) && !cs.disabled;
-          const cardClass = `block overflow-hidden rounded-[20px] border border-line bg-card p-2 ${
+          const cardClass = `block overflow-hidden rounded-[20px] border border-neutral-200 bg-card p-2 ${
             isLive
-              ? "group transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_24px_44px_-28px_rgba(26,25,23,0.35)]"
+              ? "group transition-all duration-300 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-[0_24px_44px_-28px_rgba(26,25,23,0.35)]"
               : ""
           }`;
 
           const content = (
             <>
-              {/* Thumbnail floats on a pastel gradient backdrop, framed
-                  card-style like yards.framer.website's project cards. */}
-              <div
-                className={`relative aspect-[3/2] overflow-hidden rounded-2xl bg-linear-to-br p-5 ${cs.gradient}`}
-              >
+              {/* Thumbnail fills the full media area — no gradient backdrop
+                  or inset padding. */}
+              <div className="relative aspect-[3/2] overflow-hidden rounded-2xl bg-paper-2">
                 {cs.image ? (
-                  <div className="relative h-full w-full overflow-hidden rounded-xl bg-paper shadow-[0_20px_36px_-20px_rgba(26,25,23,0.4)]">
-                    <Image
-                      src={cs.image}
-                      alt=""
-                      fill
-                      sizes="(min-width: 640px) 420px, 90vw"
-                      className="object-cover"
-                    />
-                  </div>
+                  <Image
+                    src={cs.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 640px) 420px, 90vw"
+                    className="object-cover"
+                  />
                 ) : (
-                  <div className="grid h-full place-items-center rounded-xl bg-paper text-muted">
+                  <div className="grid h-full place-items-center text-muted">
                     <ImageIcon className="h-8 w-8" />
                   </div>
                 )}
