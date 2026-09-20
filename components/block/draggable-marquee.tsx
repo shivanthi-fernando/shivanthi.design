@@ -41,7 +41,9 @@ type DraggableMarqueeProps = {
  *
  * Any item pops up on hover regardless of its position in the strip, and
  * (when `lightbox` is on) a genuine click — as opposed to the end of a drag
- * — opens that item full-screen.
+ * — opens that item full-screen. Hovering one item also dims every other
+ * item in the strip (all sets, not just the one being hovered) — the
+ * spotlight-style hover from orevbajohn.me's carousel.
  */
 export function DraggableMarquee({
   items,
@@ -59,6 +61,10 @@ export function DraggableMarquee({
   const loopWidthRef = useRef(0);
   const [mounted, setMounted] = useState(false);
   const [lightboxItem, setLightboxItem] = useState<MarqueeItem | null>(null);
+  // Key of the currently-hovered card instance (set-index + item id), so
+  // every *other* rendered instance — across all three duplicated sets —
+  // dims while it's hovered.
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -139,35 +145,42 @@ export function DraggableMarquee({
       className="flex shrink-0"
       style={{ gap }}
     >
-      {items.map((item) => (
-        <div
-          key={`${setIndex}-${item.id}`}
-          onClick={() => {
-            const wasDrag = dragDistanceRef.current > 5;
-            dragDistanceRef.current = 0;
-            if (!lightbox || wasDrag) return;
-            setLightboxItem(item);
-          }}
-          className={`shrink-0 transition-transform duration-300 ease-out hover:z-10 ${
-            lightbox ? "cursor-zoom-in" : ""
-          }`}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = `scale(${hoverScale})`;
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "scale(1)";
-          }}
-        >
-          <Image
-            src={item.src}
-            alt={item.alt ?? ""}
-            width={item.width}
-            height={item.height}
-            draggable={false}
-            className={item.imageClassName ?? "h-64 w-48 rounded-2xl object-cover"}
-          />
-        </div>
-      ))}
+      {items.map((item) => {
+        const key = `${setIndex}-${item.id}`;
+        const isDimmed = hoveredKey !== null && hoveredKey !== key;
+
+        return (
+          <div
+            key={key}
+            onClick={() => {
+              const wasDrag = dragDistanceRef.current > 5;
+              dragDistanceRef.current = 0;
+              if (!lightbox || wasDrag) return;
+              setLightboxItem(item);
+            }}
+            className={`relative shrink-0 overflow-hidden rounded-2xl transition-[transform,opacity,filter] duration-300 ease-out hover:z-10 ${
+              lightbox ? "cursor-zoom-in" : ""
+            } ${isDimmed ? "opacity-40 grayscale" : "opacity-100"}`}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = `scale(${hoverScale})`;
+              setHoveredKey(key);
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              setHoveredKey((prev) => (prev === key ? null : prev));
+            }}
+          >
+            <Image
+              src={item.src}
+              alt={item.alt ?? ""}
+              width={item.width}
+              height={item.height}
+              draggable={false}
+              className={item.imageClassName ?? "h-64 w-48 rounded-2xl object-cover"}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 
