@@ -55,10 +55,11 @@ export default function CaseStudies() {
           }`;
 
           const content = (
-            <div className="flex flex-col-reverse sm:flex-row sm:items-center">
-              {/* Text — name, heading, CTA — on the left, 1/3 of the row.
-                  Its own padding, since the card itself has none (so the
-                  image on the right can sit flush against the card edge). */}
+            <div className="flex flex-col-reverse sm:flex-row sm:items-start">
+              {/* Text — name, heading, CTA — on the left, 1/3 of the row,
+                  aligned to the top. Its own padding, since the card
+                  itself has none (so the image on the right can sit
+                  flush against the card edge). */}
               <div className="min-w-0 p-5 sm:w-1/3 sm:py-6">
                 <h4 className="font-display text-base font-semibold text-ink">{cs.name}</h4>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted">{cs.heading}</p>
@@ -68,9 +69,10 @@ export default function CaseStudies() {
                 </span>
               </div>
 
-              {/* Thumbnail — bordered, flush against the card's own edges
-                  (no padding around it), on the right, 2/3 of the row. */}
-              <div className="relative aspect-[3/2] w-full shrink-0 overflow-hidden border border-neutral-200 bg-paper-2 sm:w-2/3">
+              {/* Thumbnail — no border of its own, flush against the
+                  card's own edges (no padding around it either), on the
+                  right, 2/3 of the row. */}
+              <div className="relative aspect-[3/2] w-full shrink-0 overflow-hidden bg-paper-2 sm:w-2/3">
                 {cs.image ? (
                   <Image
                     src={cs.image}
