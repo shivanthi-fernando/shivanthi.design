@@ -1,7 +1,4 @@
-import Link from "next/link";
-import { SectionHead } from "./ui";
-import { ArrowRight } from "./icons";
-import Reveal from "./Reveal";
+import { CaseStudyHero } from "./CaseStudyHero";
 import {
   CaseStudyH2 as H2,
   CaseStudyH3 as H3,
@@ -18,31 +15,16 @@ const palette = [
 
 export default function MosaicCaseStudy() {
   return (
-    <section className="pb-20 pt-10 sm:pb-28 sm:pt-14 md:pt-16">
-      <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
-        <Reveal>
-          <Link
-            href="/#projects"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
-          >
-            <ArrowRight className="h-3.5 w-3.5 rotate-180" />
-            Back to Projects
-          </Link>
-        </Reveal>
-
-        <div className="mt-6">
-          <SectionHead
-            label="Mosaic"
-            title="Mosaic"
-            intro="Redesigning a Norwegian product after uncovering what users and the client actually needed."
-          />
-        </div>
-
-        <div className="max-w-2xl">
-          <CaseStudyFacts
-            role="UX/UI Designer"
-            projectType="Client-requested redesign & design system"
-          />
+    <CaseStudyHero
+      image="/projects/Mosaic/Mosaic_Thumbnail.png"
+      label="Mosaic"
+      title="Mosaic"
+      intro="Redesigning a Norwegian product after uncovering what users and the client actually needed."
+    >
+      <CaseStudyFacts
+        role="UX/UI Designer"
+        projectType="Client-requested redesign & design system"
+      />
 
           <H2>Overview</H2>
           <P>
@@ -195,8 +177,6 @@ export default function MosaicCaseStudy() {
             the foundation that helps every screen feel like part of the
             same product.
           </P>
-        </div>
-      </div>
-    </section>
+    </CaseStudyHero>
   );
 }

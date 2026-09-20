@@ -1,8 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
-import { SectionHead } from "./ui";
+import { CaseStudyHero } from "./CaseStudyHero";
 import { ArrowRight } from "./icons";
-import Reveal from "./Reveal";
 import {
   CaseStudyH2 as H2,
   CaseStudyH3 as H3,
@@ -23,41 +20,13 @@ const examFlow = [
 
 export default function BrightRootCaseStudy() {
   return (
-    <section className="pb-20 pt-10 sm:pb-28 sm:pt-14 md:pt-16">
-      <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
-        <Reveal>
-          <Link
-            href="/#projects"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
-          >
-            <ArrowRight className="h-3.5 w-3.5 rotate-180" />
-            Back to Projects
-          </Link>
-        </Reveal>
-
-        <Reveal delay={40}>
-          <div className="relative mt-6 aspect-[1728/1202] overflow-hidden rounded-2xl border border-line bg-paper-2">
-            <Image
-              src="/projects/BrightRoot/BrightRoot_Thumbnail.png"
-              alt=""
-              fill
-              sizes="(min-width: 1024px) 960px, 90vw"
-              className="object-cover"
-              priority
-            />
-          </div>
-        </Reveal>
-
-        <div className="mt-6">
-          <SectionHead
-            label="BrightRoot"
-            title="BrightRoot"
-            intro="Designing an institute platform and student exam experience. BrightRoot connects institutes with students through public institute pages, student assessments, and administrative tools."
-          />
-        </div>
-
-        <div className="max-w-2xl">
-          <CaseStudyFacts role="UX/UI Designer" projectType="Client-requested product design" />
+    <CaseStudyHero
+      image="/projects/BrightRoot/BrightRoot_Cover.png"
+      label="BrightRoot"
+      title="BrightRoot"
+      intro="Designing an institute platform and student exam experience. BrightRoot connects institutes with students through public institute pages, student assessments, and administrative tools."
+    >
+      <CaseStudyFacts role="UX/UI Designer" projectType="Client-requested product design" />
 
           <H2>The Challenge</H2>
           <P>
@@ -272,8 +241,6 @@ export default function BrightRootCaseStudy() {
             product experience while adapting the interaction patterns to
             the needs of each user.
           </P>
-        </div>
-      </div>
-    </section>
+    </CaseStudyHero>
   );
 }
