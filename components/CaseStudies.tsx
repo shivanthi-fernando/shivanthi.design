@@ -20,6 +20,10 @@ import { ArrowUpRight, ImageIcon } from "./icons";
 const caseStudies: {
   heading: string;
   name: string;
+  /** Short category/type line shown between the heading and the CTA,
+   *  e.g. "Education · Landing page and SaaS design". Optional — cards
+   *  without one just skip that line. */
+  category?: string;
   image: string | null;
   href: string | null;
   disabled?: boolean;
@@ -27,6 +31,7 @@ const caseStudies: {
   {
     heading: "Turned fragmented education workflows into one connected experience",
     name: "BrightRoot",
+    category: "Education · Landing page and SaaS design",
     image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
     href: "/projects/brightroot",
   },
@@ -65,6 +70,9 @@ export default function CaseStudies() {
                   flush against the card edge). */}
               <div className="min-w-0 p-5 sm:w-1/3 sm:py-6">
                 <h4 className="font-display text-base font-semibold text-ink">{cs.heading}</h4>
+                {cs.category && (
+                  <p className="mt-2 text-sm font-normal text-muted">{cs.category}</p>
+                )}
                 <span className="mt-4 inline-flex items-center gap-1.5 border-b-2 border-line-strong pb-0.5 text-sm font-medium text-ink transition-colors group-hover:border-primary">
                   Read case study
                   <ArrowUpRight className="h-4 w-4 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
