@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "./Reveal";
-import { ArrowRight, ImageIcon } from "./icons";
+import { ArrowUpRight, ImageIcon } from "./icons";
 
 /**
  * Case Studies — cards for full write-ups: name + descriptive heading +
@@ -63,9 +63,9 @@ export default function CaseStudies() {
               <div className="min-w-0 p-5 sm:w-1/3 sm:py-6">
                 <h4 className="font-display text-base font-semibold text-ink">{cs.name}</h4>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted">{cs.heading}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-ink">
+                <span className="mt-4 inline-flex items-center gap-1.5 border-b-2 border-line-strong pb-0.5 text-sm font-medium text-ink transition-colors group-hover:border-primary">
                   Read case study
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>
               </div>
 
