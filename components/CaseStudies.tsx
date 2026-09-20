@@ -48,16 +48,18 @@ export default function CaseStudies() {
       <div className="mt-6 grid gap-8">
         {caseStudies.map((cs, i) => {
           const isLive = Boolean(cs.href) && !cs.disabled;
-          const cardClass = `block overflow-hidden rounded-[20px] border border-neutral-200 bg-card p-2 ${
+          const cardClass = `block overflow-hidden rounded-[20px] border border-neutral-200 bg-card ${
             isLive
               ? "group transition-all duration-300 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-[0_24px_44px_-28px_rgba(26,25,23,0.35)]"
               : ""
           }`;
 
           const content = (
-            <div className="flex flex-col-reverse gap-5 sm:flex-row sm:items-center sm:gap-6">
-              {/* Text — name, heading, CTA — on the left, 1/3 of the row. */}
-              <div className="min-w-0 px-2 pb-2 pt-4 sm:w-1/3 sm:py-2">
+            <div className="flex flex-col-reverse sm:flex-row sm:items-center">
+              {/* Text — name, heading, CTA — on the left, 1/3 of the row.
+                  Its own padding, since the card itself has none (so the
+                  image on the right can sit flush against the card edge). */}
+              <div className="min-w-0 p-5 sm:w-1/3 sm:py-6">
                 <h4 className="font-display text-base font-semibold text-ink">{cs.name}</h4>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted">{cs.heading}</p>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-ink">
@@ -66,8 +68,9 @@ export default function CaseStudies() {
                 </span>
               </div>
 
-              {/* Thumbnail — bordered, on the right, 2/3 of the row. */}
-              <div className="relative aspect-[3/2] w-full shrink-0 overflow-hidden rounded-2xl border border-neutral-200 bg-paper-2 sm:w-2/3">
+              {/* Thumbnail — bordered, flush against the card's own edges
+                  (no padding around it), on the right, 2/3 of the row. */}
+              <div className="relative aspect-[3/2] w-full shrink-0 overflow-hidden border border-neutral-200 bg-paper-2 sm:w-2/3">
                 {cs.image ? (
                   <Image
                     src={cs.image}
