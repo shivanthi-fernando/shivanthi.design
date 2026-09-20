@@ -7,15 +7,18 @@ import Reveal from "./Reveal";
  * Writing — a list of the UX psychology mini-series published on Medium.
  * Styled after bolsdesign.co's "Articles I like" list: a plain row list
  * (no divider lines) — title + external-link arrow, gray outlined icon
- * instead of a thumbnail image. On bolsdesign.co, hovering a row pops a
- * description card out to the side; here the same hover reveal happens
- * directly under the hovered title instead, via CSS only (group-hover /
- * group-focus-within — no JS state needed), so it works for keyboard
- * focus too. Newest first; each row opens the full article externally.
+ * instead of a thumbnail image, with the description shown right under
+ * the title at all times (bolsdesign.co's own hover-reveal pattern was
+ * tried first, but per feedback the description is always visible here
+ * instead). Newest first; each row opens the full article externally.
  *
  * Only ever rendered as the home page's Blogs section now (the standalone
  * /blogs listing page was removed in favor of in-page navigation), so this
  * always uses the tighter, no-standalone-page spacing.
+ *
+ * The icon centers against the full title+description block (not just the
+ * title) so it reads as one group with both lines of text, rather than
+ * looking paired with the title alone.
  */
 export default function Writing() {
   return (
@@ -34,33 +37,25 @@ export default function Writing() {
                 href={article.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block rounded-xl px-3 transition-colors hover:bg-neutral-100 focus-visible:bg-neutral-100"
+                className="group flex items-center gap-4 rounded-xl px-3 py-2 transition-colors hover:bg-neutral-100 focus-visible:bg-neutral-100"
               >
-                {/* Icon + title + arrow — a fixed-height row on its own, so
-                    the title's position never shifts when the description
-                    below expands open on hover. */}
-                <div className="flex items-center gap-4 pt-2 pb-1">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-neutral-300 text-muted">
-                    <FileTextIcon className="h-5 w-5" />
-                  </span>
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-neutral-300 text-muted">
+                  <FileTextIcon className="h-5 w-5" />
+                </span>
 
-                  <span className="min-w-0 flex-1 font-display text-base font-medium leading-snug text-ink">
-                    {article.title}
-                  </span>
-
-                  <ArrowUpRight className="h-4 w-4 shrink-0 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </div>
-
-                {/* Description — collapsed to 0 height, expands open right
-                    under this row's own title on hover/focus. The negative
-                    top margin pulls it up close under the title without
-                    touching the title row itself (which would move it). */}
-                <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
-                  <div className="overflow-hidden">
-                    <p className="-mt-2 pb-2 pl-[3.75rem] pr-8 text-sm leading-relaxed text-muted">
-                      {article.desc}
-                    </p>
+                {/* Title + description as one column, so the icon (via
+                    items-center on the row) centers against both lines
+                    together rather than the title alone. */}
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-3">
+                    <span className="min-w-0 flex-1 font-display text-base font-medium leading-snug text-ink">
+                      {article.title}
+                    </span>
+                    <ArrowUpRight className="h-4 w-4 shrink-0 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </div>
+                  <p className="mt-0.5 pr-8 text-sm leading-relaxed text-muted">
+                    {article.desc}
+                  </p>
                 </div>
               </a>
             </Reveal>
