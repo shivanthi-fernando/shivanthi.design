@@ -6,11 +6,13 @@ import { ArrowRight } from "./icons";
 import Reveal from "./Reveal";
 
 /**
- * Shared case-study page shell: a full-bleed hero image up top, with the
- * content (back link, title, and everything passed as children) sitting
- * in a rounded-top panel that overlaps the image's bottom edge. Modeled
- * on shivanthi.framer.website's case-study pages — the image reads as a
- * background the content panel slides over as you scroll into the page.
+ * Shared case-study page shell: a hero image up top, kept within the
+ * same max-w-5xl content width as the rest of the site (not full-bleed),
+ * with the content (back link, title, and everything passed as children)
+ * sitting in a rounded-top panel that overlaps the image's bottom edge —
+ * the sliding-card effect from shivanthi.framer.website's case-study
+ * pages, just inset to match this site's own content width instead of
+ * running edge-to-edge.
  */
 export function CaseStudyHero({
   image,
@@ -26,24 +28,24 @@ export function CaseStudyHero({
   children: ReactNode;
 }) {
   return (
-    <section className="pb-20 sm:pb-28">
-      {/* aspect-[1728/1202] matches the case study cover images' own
-          dimensions, so object-cover has nothing to crop/zoom into —
-          a viewport-height-based box was forcing a much wider ratio
-          than the source images, which is what caused the zoom. */}
-      <div className="relative aspect-[1728/1202] max-h-[70vh] w-full overflow-hidden">
-        <Image
-          src={image}
-          alt=""
-          fill
-          sizes="100vw"
-          className="scale-125 object-cover object-top"
-          priority
-        />
-      </div>
+    <section className="pb-20 pt-10 sm:pb-28 sm:pt-14 md:pt-16">
+      <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
+        {/* aspect-[1728/1202] matches the case study cover images' own
+            dimensions, so object-cover has nothing to crop/zoom into —
+            a viewport-height-based box was forcing a much wider ratio
+            than the source images, which is what caused the zoom. */}
+        <div className="relative aspect-[1728/1202] max-h-[70vh] w-full overflow-hidden rounded-2xl">
+          <Image
+            src={image}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 960px, 90vw"
+            className="object-cover object-top"
+            priority
+          />
+        </div>
 
-      <div className="relative -mt-10 rounded-t-[32px] bg-paper pt-10 sm:-mt-14 sm:rounded-t-[40px] sm:pt-14">
-        <div className="mx-auto max-w-5xl px-6 sm:px-12 lg:px-20">
+        <div className="relative -mt-10 rounded-t-[32px] bg-paper pt-10 sm:-mt-14 sm:rounded-t-[40px] sm:pt-14">
           <Reveal>
             <Link
               href="/#projects"

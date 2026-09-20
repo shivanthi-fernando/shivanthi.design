@@ -21,7 +21,7 @@ const examFlow = [
 export default function BrightRootCaseStudy() {
   return (
     <CaseStudyHero
-      image="/projects/BrightRoot/BrightRoot_Cover.png"
+      image="/projects/BrightRoot/BrightRoot_Thumbnail.png"
       label="BrightRoot"
       title="BrightRoot"
       intro="Designing an institute platform and student exam experience. BrightRoot connects institutes with students through public institute pages, student assessments, and administrative tools."
