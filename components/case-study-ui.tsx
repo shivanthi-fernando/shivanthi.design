@@ -9,7 +9,7 @@ import { ImageIcon } from "./icons";
 
 export function CaseStudyH2({ children }: { children: ReactNode }) {
   return (
-    <h2 className="mt-14 font-display text-2xl font-semibold text-ink sm:text-[1.75rem]">
+    <h2 className="mt-14 font-display text-xl font-semibold text-ink sm:text-2xl">
       {children}
     </h2>
   );

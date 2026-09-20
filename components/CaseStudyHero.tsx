@@ -42,11 +42,10 @@ export function CaseStudyHero({
 
         {/* Sticky — pinned at the top of the viewport while the content
             panel below (its sibling, much taller) scrolls up over it.
-            aspect-[1728/601] is exactly double the source images' own
-            1728/1202 ratio, so combined with object-top this crops
-            down to just the top half of the image instead of showing
-            it in full. */}
-        <div className="sticky top-0 z-0 mt-6 aspect-[1728/601] max-h-[45vh] w-full overflow-hidden rounded-2xl">
+            aspect-[1728/850] crops in on the source images' own
+            1728/1202 ratio (taller than the earlier half-crop, so more
+            of the screenshot is visible), combined with object-top. */}
+        <div className="sticky top-0 z-0 mt-6 aspect-[1728/850] max-h-[60vh] w-full overflow-hidden rounded-2xl">
           <Image
             src={image}
             alt=""
