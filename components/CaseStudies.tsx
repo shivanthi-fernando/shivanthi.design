@@ -4,8 +4,12 @@ import Reveal from "./Reveal";
 import { ArrowUpRight, ImageIcon } from "./icons";
 
 /**
- * Case Studies — cards for full write-ups: name + descriptive heading +
- * "Read case study" CTA on the left, a bordered thumbnail on the right.
+ * Case Studies — cards for full write-ups: an outcome-focused heading
+ * (the card's title) + "Read case study" CTA on the left, a bordered
+ * thumbnail on the right. `name` (the project's own, possibly
+ * anonymized, name) is kept in the data for keys/alt text but no longer
+ * rendered as a separate heading — the descriptive `heading` line is the
+ * title now.
  *
  * `disabled` turns the card into a plain, non-hoverable, non-clickable
  * block — without touching `href` or the case study page itself, so
@@ -21,8 +25,7 @@ const caseStudies: {
   disabled?: boolean;
 }[] = [
   {
-    heading:
-      "Designed an institute platform's public pages, student exam portal, and admin workspace.",
+    heading: "Turned fragmented education workflows into one connected experience",
     name: "BrightRoot",
     image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
     href: "/projects/brightroot",
@@ -61,8 +64,7 @@ export default function CaseStudies() {
                   itself has none (so the image on the right can sit
                   flush against the card edge). */}
               <div className="min-w-0 p-5 sm:w-1/3 sm:py-6">
-                <h4 className="font-display text-base font-semibold text-ink">{cs.name}</h4>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">{cs.heading}</p>
+                <h4 className="font-display text-base font-semibold text-ink">{cs.heading}</h4>
                 <span className="mt-4 inline-flex items-center gap-1.5 border-b-2 border-line-strong pb-0.5 text-sm font-medium text-ink transition-colors group-hover:border-primary">
                   Read case study
                   <ArrowUpRight className="h-4 w-4 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
