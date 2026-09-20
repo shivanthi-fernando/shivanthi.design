@@ -23,7 +23,7 @@ export default function Hero() {
             </div>
           </Reveal>
 
-          <Reveal as="h1" delay={60} className="mt-6 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl md:text-[3.6rem]">
+          <Reveal as="h1" delay={60} className="mt-6 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl md:text-[3.2rem]">
             Turning ideas into{" "}
             <span className="hl bg-butter" style={{ padding: 0, borderRadius: 0 }}>
               experiences
@@ -33,10 +33,12 @@ export default function Hero() {
           </Reveal>
 
           <Reveal as="p" delay={120} className="mt-6 max-w-xl text-lg leading-normal text-muted">
-            I bring clarity to digital products through thoughtful UX, rapid
+            Bringing clarity to digital products through thoughtful UX, rapid
             prototyping, and AI-powered workflows. Combining human-centered
-            design with modern technology to create experiences that are
-            intuitive, engaging, and built around real user needs.
+            design with modern technology and AI-powered product development
+            to bring ideas to life, solve real user problems, and create
+            experiences that are intuitive, engaging, and designed around
+            real user needs.
           </Reveal>
 
           <Reveal as="p" delay={150} className="mt-3 max-w-xl text-lg leading-normal text-muted">
