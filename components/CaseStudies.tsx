@@ -4,14 +4,14 @@ import Reveal from "./Reveal";
 import { ArrowRight, ImageIcon } from "./icons";
 
 /**
- * Case Studies — cards for full write-ups: a thumbnail, a descriptive
- * one-line heading, the project's (possibly anonymized) name as smaller
- * supporting text below it, and a "Read case study" link.
+ * Case Studies — cards for full write-ups: name + descriptive heading +
+ * "Read case study" CTA on the left, a bordered thumbnail on the right.
  *
  * `disabled` turns the card into a plain, non-hoverable, non-clickable
- * block and mutes the "Read case study" text, with a "Coming soon" chip
- * next to it — without touching `href` or the case study page itself, so
- * flipping it back to false is all it takes to relink it later.
+ * block — without touching `href` or the case study page itself, so
+ * flipping it back to false is all it takes to relink it later (both
+ * detail pages, app/projects/brightroot and app/projects/mosaic, were
+ * always kept — only ever hidden behind this flag, never deleted).
  */
 const caseStudies: {
   heading: string;
@@ -26,7 +26,6 @@ const caseStudies: {
     name: "BrightRoot",
     image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
     href: "/projects/brightroot",
-    disabled: true,
   },
   {
     heading:
@@ -34,7 +33,6 @@ const caseStudies: {
     name: "Mosaic",
     image: "/projects/Mosaic/Mosaic_Thumbnail.png",
     href: "/projects/mosaic",
-    disabled: true,
   },
 ];
 
@@ -57,16 +55,25 @@ export default function CaseStudies() {
           }`;
 
           const content = (
-            <>
-              {/* Thumbnail fills the full media area — no gradient backdrop
-                  or inset padding. */}
-              <div className="relative aspect-[3/2] overflow-hidden rounded-2xl bg-paper-2">
+            <div className="flex flex-col-reverse gap-5 sm:flex-row sm:items-center sm:gap-6">
+              {/* Text — name, heading, CTA — on the left, 1/3 of the row. */}
+              <div className="min-w-0 px-2 pb-2 pt-4 sm:w-1/3 sm:py-2">
+                <h4 className="font-display text-base font-semibold text-ink">{cs.name}</h4>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted">{cs.heading}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-ink">
+                  Read case study
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+
+              {/* Thumbnail — bordered, on the right, 2/3 of the row. */}
+              <div className="relative aspect-[3/2] w-full shrink-0 overflow-hidden rounded-2xl border border-neutral-200 bg-paper-2 sm:w-2/3">
                 {cs.image ? (
                   <Image
                     src={cs.image}
                     alt=""
                     fill
-                    sizes="(min-width: 640px) 420px, 90vw"
+                    sizes="(min-width: 640px) 380px, 90vw"
                     className="object-cover"
                   />
                 ) : (
@@ -75,24 +82,7 @@ export default function CaseStudies() {
                   </div>
                 )}
               </div>
-              <div className="px-2 pb-2 pt-4">
-                <h4 className="font-display text-base font-semibold text-ink">{cs.name}</h4>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted">{cs.heading}</p>
-                <div className="mt-4 flex items-center gap-3">
-                  {isLive && (
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-ink">
-                      Read case study
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                    </span>
-                  )}
-                  {cs.disabled && (
-                    <span className="inline-flex items-center rounded-full bg-neutral-200 px-3.5 py-1.5 text-xs font-semibold text-neutral-600">
-                      Coming soon
-                    </span>
-                  )}
-                </div>
-              </div>
-            </>
+            </div>
           );
 
           return (
