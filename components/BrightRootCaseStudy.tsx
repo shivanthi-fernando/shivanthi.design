@@ -16,7 +16,7 @@ export default function BrightRootCaseStudy() {
       image="/projects/BrightRoot/BrightRoot_Thumbnail.png"
       label="BrightRoot"
       title="Turned fragmented education workflows into one connected experience"
-      intro="The platform was created to help institutes run and monetize academic competitions through a digital experience. Students can discover competitions, choose their participation level, complete registration and payment, and continue managing their activities through the platform. Behind this, institutes can manage competitions, assessments, questions, and student participation from a centralized system."
+      intro="Institutes needed a clearer digital way to attract students to academic competitions and generate revenue through paid registrations. The challenge was connecting discovery, level selection, pricing, payment, and participation without making the experience feel fragmented. I designed a connected experience that guided students from discovering a competition to registering, participating, taking assessments, and reviewing their progress, while giving institutes the tools to manage the ecosystem behind it."
     >
       <CaseStudyFacts
         facts={[
