@@ -24,7 +24,8 @@ export function CaseStudyHero({
   image: string;
   label: string;
   title: string;
-  intro: string;
+  /** A single paragraph, or several — each renders as its own <p>. */
+  intro: string | string[];
   children: ReactNode;
 }) {
   return (

@@ -36,8 +36,10 @@ export function CaseStudyList({ children }: { children: ReactNode }) {
 /**
  * The quick-facts row shown at the top of every case study (Role,
  * Platform, Tools, Scope, ...) — an arbitrary list of label/value pairs
- * so each project can show as many or as few as make sense, laid out in
- * a wrapping two-column grid.
+ * so each project can show as many or as few as make sense. Laid out as
+ * an actual bordered grid (not just CSS `display: grid` with invisible
+ * seams) — a 1px `bg-line` showing through `gap-px` draws the dividers
+ * between cells, with a matching border wrapping the whole thing.
  */
 export function CaseStudyFacts({
   facts,
@@ -45,9 +47,9 @@ export function CaseStudyFacts({
   facts: { label: string; value: string }[];
 }) {
   return (
-    <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8">
+    <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line">
       {facts.map((fact) => (
-        <div key={fact.label}>
+        <div key={fact.label} className="bg-card p-4">
           <div className="font-label text-xs font-medium tracking-wide text-muted">
             {fact.label}
           </div>

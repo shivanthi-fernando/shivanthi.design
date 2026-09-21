@@ -136,7 +136,8 @@ export function SectionHead({
 }: {
   label: string;
   title: ReactNode;
-  intro?: ReactNode;
+  /** A single paragraph, or several — each renders as its own <p>. */
+  intro?: ReactNode | ReactNode[];
   align?: "left" | "center";
   /** Overrides just the title's size classes — everything else (weight,
    *  line-height) stays the same regardless. */
@@ -150,7 +151,16 @@ export function SectionHead({
       <h2 className={`font-semibold leading-[1.1] ${titleClassName}`}>
         {title}
       </h2>
-      {intro && <p className="mt-4 text-lg leading-relaxed text-muted">{intro}</p>}
+      {intro &&
+        (Array.isArray(intro) ? (
+          intro.map((para, i) => (
+            <p key={i} className="mt-4 text-lg leading-relaxed text-muted">
+              {para}
+            </p>
+          ))
+        ) : (
+          <p className="mt-4 text-lg leading-relaxed text-muted">{intro}</p>
+        ))}
     </div>
   );
 }
