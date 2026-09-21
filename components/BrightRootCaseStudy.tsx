@@ -68,22 +68,26 @@ export default function BrightRootCaseStudy() {
         steps={[
           "Discover",
           "Understand",
-          "Choose level",
+          "Choose competition level",
           "Pay",
           "Register",
-          "Participate",
-          "Assess",
+          "Participate the competition",
           "Review",
         ]}
       />
       <P>Behind the student experience was another connected workflow:</P>
-      <CaseStudyFlow steps={["Create", "Organize", "Publish", "Manage", "Review"]} />
+      <CaseStudyFlow
+        steps={["Create questions", "Organize question bank", "Publish quiz", "Manage", "Review"]}
+      />
       <P>
         This helped me understand where different parts of the product
         needed to connect and where users needed additional context before
         taking an action.
       </P>
-      <ImageSlot caption="A wide composition showing the competition page, registration flow, student dashboard, and leaderboard." />
+      <ImageSlot
+        src="/projects/BrightRoot/BR_CaseStudy_3.png"
+        caption="A wide composition showing the competition page, registration flow, student dashboard, and leaderboard."
+      />
 
       <H2>Design challenge 01: Making competition registration a clear path to conversion</H2>
       <P>
