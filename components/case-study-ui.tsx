@@ -69,16 +69,16 @@ export function CaseStudyFacts({
  */
 export function CaseStudyFlow({ steps }: { steps: string[] }) {
   return (
-    <div className="mt-4 flex flex-wrap items-center gap-2">
+    <div className="mt-4 flex flex-col items-start">
       {steps.map((step, i) => (
-        <span key={step} className="flex items-center gap-2">
-          <span className="rounded-full border border-line-strong bg-card px-3 py-1.5 text-sm font-medium text-ink">
+        <div key={step} className="flex flex-col items-start">
+          <span className="rounded-lg border border-line-strong bg-card px-3.5 py-2 text-sm font-medium text-ink">
             {step}
           </span>
           {i < steps.length - 1 && (
-            <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted" />
+            <ArrowRight className="my-1 ml-4 h-3.5 w-3.5 shrink-0 rotate-90 text-muted" />
           )}
-        </span>
+        </div>
       ))}
     </div>
   );
