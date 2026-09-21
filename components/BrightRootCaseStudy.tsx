@@ -1,22 +1,14 @@
 import { CaseStudyHero } from "./CaseStudyHero";
-import { ArrowRight } from "./icons";
 import {
   CaseStudyH2 as H2,
   CaseStudyH3 as H3,
   CaseStudyP as P,
   CaseStudyList,
   CaseStudyFacts,
+  CaseStudyFlow,
+  CaseStudyQuote,
   CaseStudyImageSlot as ImageSlot,
 } from "./case-study-ui";
-
-const examFlow = [
-  "System check",
-  "Exam instructions",
-  "Question answering",
-  "Review answers",
-  "Submit",
-  "Results",
-];
 
 export default function BrightRootCaseStudy() {
   return (
@@ -24,223 +16,380 @@ export default function BrightRootCaseStudy() {
       image="/projects/BrightRoot/BrightRoot_Thumbnail.png"
       label="BrightRoot"
       title="Turned fragmented education workflows into one connected experience"
-      intro="Designing an institute platform and student exam experience. BrightRoot connects institutes with students through public institute pages, student assessments, and administrative tools."
+      intro="An education platform designed to bring institute activities, student participation, assessments, and administrative workflows into one connected experience."
     >
-      <CaseStudyFacts role="UX/UI Designer" projectType="Client-requested product design" />
+      <CaseStudyFacts
+        facts={[
+          { label: "Role", value: "UX/UI Designer" },
+          { label: "Platform", value: "Web" },
+          { label: "Tools", value: "Figma" },
+          {
+            label: "Scope",
+            value: "Student experience · Assessment experience · Admin experience",
+          },
+        ]}
+      />
 
-          <H2>The Challenge</H2>
-          <P>
-            Educational institutes need a way to present their identity,
-            share information with prospective students, and manage
-            assessments through a centralized platform. Students should be
-            able to discover institutes and complete exams through a clear,
-            structured experience, while lecturers need tools to create and
-            manage exam content.
-          </P>
-          <P>
-            The client requested designs for these experiences, with a
-            focus on the public-facing institute page, the student exam
-            journey, and the administrative workflows.
-          </P>
+      <H2>Context</H2>
+      <P>
+        As institutes expand beyond traditional classroom learning, students
+        interact with many different parts of the education experience —
+        discovering competitions and events, registering for activities,
+        managing their schedules, completing assessments, and accessing
+        results. Behind these experiences, institute teams also need to
+        manage questions, exams, student responses, and other academic
+        content. The client wanted to address this by creating a single
+        platform that could bring these student and administrative needs
+        together.
+      </P>
 
-          <H2>1. Designing the Public Institute Experience</H2>
-          <H3>Helping Institutes Present Their Identity Online</H3>
-          <P>
-            The public landing page allows each institute registered on
-            BrightRoot to create a branded online presence. It serves as an
-            entry point for prospective students and visitors to learn
-            about the institute, explore its offerings, discover public
-            events, and register as a student.
-          </P>
-          <P>
-            The first phase focused on the public-facing experience.
-            Student-specific events, quizzes, exams, and other
-            authenticated features were intentionally excluded from this
-            scope.
-          </P>
+      <H2>Problem</H2>
+      <P>
+        The client came with a broad set of requirements covering institute
+        information, competitions, events, student activities, online exams,
+        and assessment management. The challenge was not simply to provide
+        all of these features, but to make them feel like{" "}
+        <strong className="font-semibold text-ink">one coherent experience</strong>.
+      </P>
+      <P>
+        Students needed to move naturally from discovering an opportunity to
+        participating in it, while registered students needed a central
+        place to understand what required their attention. At the same
+        time, administrators needed efficient ways to manage the content
+        that powered these experiences.
+      </P>
+      <P>The design challenge became:</P>
+      <CaseStudyQuote>
+        How might I turn a broad set of disconnected education workflows
+        into a clear, connected experience for students and institute
+        teams?
+      </CaseStudyQuote>
 
-          <H3>Key User Journeys</H3>
-          <CaseStudyList>
-            <li>Discover an institute and understand what it offers.</li>
-            <li>
-              Explore upcoming workshops, competitions, social events, and
-              community activities.
-            </li>
-            <li>Register as a student when interested in joining the institute.</li>
-          </CaseStudyList>
+      <H2>Understanding the problem</H2>
+      <P>
+        I approached the requirements by looking at the{" "}
+        <strong className="font-semibold text-ink">relationships between workflows</strong>,
+        rather than treating each feature independently.
+      </P>
+      <P>The student&rsquo;s journey could be understood as:</P>
+      <CaseStudyFlow steps={["Discover", "Register", "Participate", "Assess", "Review"]} />
+      <P>While the administrative side supported that journey:</P>
+      <CaseStudyFlow steps={["Create", "Manage", "Monitor", "Review"]} />
+      <P>
+        This helped establish a product structure where the different
+        experiences had a clear relationship with each other. Instead of
+        asking &ldquo;Where should this feature go?&rdquo;, I focused on:
+      </P>
+      <CaseStudyList>
+        <li>What does the user need to know at this point?</li>
+        <li>What action are they trying to take?</li>
+        <li>What information do they need before taking that action?</li>
+        <li>What happens after they complete it?</li>
+        <li>How does this action connect to the rest of their journey?</li>
+      </CaseStudyList>
 
-          <ImageSlot caption="The public institute landing page — an entry point for prospective students to discover the institute and register." />
+      <H2>Design challenge 01: Too many things competing for attention</H2>
+      <P>
+        Once students register, they may have competitions, events, tasks,
+        announcements, upcoming activities, and assessments to keep track
+        of.
+      </P>
+      <P>
+        Simply putting all of these features into navigation would create
+        another problem:{" "}
+        <strong className="font-semibold text-ink">
+          students would have access to everything, but wouldn&rsquo;t
+          necessarily know what matters right now.
+        </strong>
+      </P>
+      <H3>The solution</H3>
+      <P>
+        I designed the student experience around{" "}
+        <strong className="font-semibold text-ink">orientation rather than navigation</strong>.
+      </P>
+      <P>
+        Instead of expecting students to visit different sections to
+        understand their current activities, the experience brings the most
+        relevant information together:
+      </P>
+      <CaseStudyList>
+        <li>What I&rsquo;ve registered for</li>
+        <li>What I need to do</li>
+        <li>What&rsquo;s coming next</li>
+        <li>What&rsquo;s changed</li>
+      </CaseStudyList>
+      <P>
+        This created a central student experience where competitions,
+        events, tasks, calendar information, statistics, and announcements
+        could be understood together.
+      </P>
+      <P>
+        The goal wasn&rsquo;t to surface every feature equally. It was to
+        help students quickly understand{" "}
+        <strong className="font-semibold text-ink">
+          where they are and what needs their attention.
+        </strong>
+      </P>
+      <ImageSlot caption="The student dashboard — bringing registrations, tasks, and announcements into one place." />
 
-          <H2>2. Designing the Student Exam Portal</H2>
-          <H3>Making Online Exams Easier to Navigate</H3>
-          <P>
-            The exam portal was designed to support a structured,
-            MCQ-based assessment experience. Students need to complete a
-            system and environment check before starting, answer different
-            types of questions, navigate between questions, and submit
-            their answers to receive their results.
-          </P>
-          <P>The design was based on the client&rsquo;s requirements and the following assumptions:</P>
-          <CaseStudyList>
-            <li>Each student has two attempts to complete an exam.</li>
-            <li>Students must complete an environment and system check before starting.</li>
-            <li>Exams include single-select, multi-select, drag-and-drop, and image-based questions.</li>
-            <li>Students can flag questions, skip questions, and return to previously viewed questions.</li>
-            <li>Results are displayed within a few seconds after submission, before the student leaves the results screen.</li>
-          </CaseStudyList>
+      <H2>Design challenge 02: Competition registration involved multiple decisions</H2>
+      <P>
+        Competition registration wasn&rsquo;t a simple &ldquo;Register&rdquo;
+        action.
+      </P>
+      <P>
+        Students could participate at different levels — District, State,
+        Country, or Global — and each level had a different price.
+      </P>
+      <P>
+        If those decisions were pushed too late into the registration
+        process, students could end up making a commitment without fully
+        understanding what they were selecting.
+      </P>
+      <H3>The solution</H3>
+      <P>
+        I treated{" "}
+        <strong className="font-semibold text-ink">
+          choice and context as part of the registration experience
+        </strong>
+        .
+      </P>
+      <P>
+        Students could first understand the competition, compare the
+        available levels, see the corresponding price, and then proceed
+        with payment and registration. The experience therefore followed:
+      </P>
+      <CaseStudyFlow steps={["Understand", "Choose", "Confirm", "Pay", "Register"]} />
+      <P>
+        This made the registration decision more transparent instead of
+        treating payment as the starting point.
+      </P>
 
-          <H3>Exam Flow</H3>
-          <div className="mt-4 flex flex-wrap items-center gap-2">
-            {examFlow.map((step, i) => (
-              <span key={step} className="flex items-center gap-2">
-                <span className="rounded-full border border-line-strong bg-card px-3 py-1.5 text-sm font-medium text-ink">
-                  {step}
-                </span>
-                {i < examFlow.length - 1 && (
-                  <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted" />
-                )}
-              </span>
-            ))}
-          </div>
-          <P>
-            The exam experience was designed to support different
-            answering behaviors while keeping the overall flow consistent.
-            Students can move back and forth between questions, flag
-            questions for review, and revisit unanswered or uncertain
-            questions before submitting.
-          </P>
+      <H2>Design challenge 03: The competition experience shouldn&rsquo;t end at registration</H2>
+      <P>
+        Registering for a competition is only one part of participation.
+      </P>
+      <P>
+        Students also want to understand how they&rsquo;re performing
+        relative to others. The platform therefore needed to support
+        leaderboards across different competition levels.
+      </P>
+      <H3>The solution</H3>
+      <P>
+        I connected the competition experience to its different levels of
+        participation. The leaderboard structure reflected the same
+        hierarchy students encountered during registration:
+      </P>
+      <CaseStudyFlow steps={["District", "State", "Country", "Global"]} />
+      <P>
+        This created continuity between{" "}
+        <strong className="font-semibold text-ink">what students registered for</strong>{" "}
+        and{" "}
+        <strong className="font-semibold text-ink">
+          what they later used to understand their standing
+        </strong>
+        . Rather than treating the leaderboard as an isolated feature, it
+        became another part of the competition journey.
+      </P>
 
-          <H3>Question Types</H3>
-          <CaseStudyList>
-            <li>
-              <strong className="font-semibold text-ink">Single-select:</strong>{" "}
-              Select one answer from a list of options.
-            </li>
-            <li>
-              <strong className="font-semibold text-ink">Multi-select:</strong>{" "}
-              Select multiple answers when more than one option is correct.
-            </li>
-            <li>
-              <strong className="font-semibold text-ink">Drag-and-drop:</strong>{" "}
-              Arrange or match items through a direct manipulation
-              interaction.
-            </li>
-            <li>
-              <strong className="font-semibold text-ink">Image-based:</strong>{" "}
-              Answer questions that include visual content.
-            </li>
-          </CaseStudyList>
+      <H2>Design challenge 04: Exams require preparation, focus, and confidence</H2>
+      <P>
+        An online exam creates a different type of UX problem. Students
+        shouldn&rsquo;t have to figure out the system while they&rsquo;re
+        already being assessed. Before answering the first question, they
+        need to know:
+      </P>
+      <CaseStudyList>
+        <li>What exam are they taking?</li>
+        <li>What are the instructions?</li>
+        <li>Is their environment ready?</li>
+        <li>Are their details correct?</li>
+        <li>What happens when they submit?</li>
+      </CaseStudyList>
+      <H3>The solution</H3>
+      <P>
+        I separated{" "}
+        <strong className="font-semibold text-ink">preparation from assessment</strong>.
+        The experience guides students through:
+      </P>
+      <CaseStudyFlow
+        steps={["Understand", "Prepare", "Verify", "Answer", "Review", "Submit"]}
+      />
+      <P>
+        The system and environment check happens before the assessment
+        begins, followed by exam-detail verification. This creates a
+        deliberate transition from &ldquo;getting ready&rdquo; to
+        &ldquo;taking the exam.&rdquo;
+      </P>
+      <ImageSlot caption="The exam experience — system check, question answering, and submission review." />
 
-          <H3>Navigation and Review</H3>
-          <P>
-            A key part of the exam experience is giving students control
-            over how they answer questions. The design supports forward
-            and backward navigation, skipping questions, and flagging
-            questions for later review.
-          </P>
-          <P>
-            This helps students manage their time and return to questions
-            they are unsure about instead of being forced into a strictly
-            linear flow.
-          </P>
+      <H2>Design challenge 05: Different question types shouldn&rsquo;t create different experiences</H2>
+      <P>The assessment needed to support multiple interaction types:</P>
+      <CaseStudyList>
+        <li>Multiple choice</li>
+        <li>Drag and drop</li>
+        <li>Short answers</li>
+        <li>Long answers</li>
+      </CaseStudyList>
+      <P>
+        The risk was creating four different interaction models that could
+        make the exam feel inconsistent.
+      </P>
+      <H3>The solution</H3>
+      <P>
+        I treated the{" "}
+        <strong className="font-semibold text-ink">question interaction as variable</strong>,
+        while keeping the surrounding exam experience consistent. The way
+        students provide an answer can change depending on the question,
+        but the overall structure, navigation, and mental model remain
+        familiar.
+      </P>
+      <P>
+        This allows students to focus on the{" "}
+        <strong className="font-semibold text-ink">content of the assessment</strong>,
+        rather than learning a new interface for each question type.
+      </P>
 
-          <H3>Submission and Results</H3>
-          <P>
-            Before submitting, students can review their answers and
-            confirm that they are ready to complete the exam. After
-            submission, the results are shown on the results screen,
-            allowing students to see their outcome without leaving the
-            exam experience.
-          </P>
+      <H2>Design challenge 06: Submission is a high-confidence moment</H2>
+      <P>
+        Completing the last question doesn&rsquo;t necessarily mean a
+        student is ready to submit. There is a difference between{" "}
+        <em>&ldquo;I&rsquo;ve answered everything&rdquo;</em> and{" "}
+        <em>&ldquo;I&rsquo;m confident I&rsquo;m ready to submit.&rdquo;</em>
+      </P>
+      <H3>The solution</H3>
+      <P>
+        I introduced a dedicated review stage before submission. The
+        experience becomes:
+      </P>
+      <CaseStudyFlow steps={["Answer", "Review", "Submit", "Results"]} />
+      <P>
+        This gives students an opportunity to check their responses before
+        committing their attempt. After submission, the experience
+        continues with results, the answer sheet, and leaderboard
+        information, giving students a clear understanding of what happened
+        after the assessment.
+      </P>
+      <ImageSlot caption="Results, answer sheet, and leaderboard — closing the loop after submission." />
 
-          <ImageSlot caption="The student exam portal — system check, question answering, and the results screen." />
+      <H2>Design challenge 07: Administrative workflows power the student experience</H2>
+      <P>
+        The student experience depends on content being created and managed
+        behind the scenes. Administrators need to create questions,
+        organize them into question banks, manage exams, and review student
+        answers.
+      </P>
+      <P>
+        The challenge was to avoid designing the admin experience as a
+        disconnected back office.
+      </P>
+      <H3>The solution</H3>
+      <P>
+        I mapped the relationship between administrative actions and
+        student outcomes.
+      </P>
+      <CaseStudyFlow
+        steps={["Create question", "Question bank", "Exam", "Student response", "Review"]}
+      />
+      <P>
+        This relationship shaped the admin information architecture and
+        helped ensure that the workflows supporting the student experience
+        were logically connected.
+      </P>
+      <ImageSlot caption="The admin workspace — questions, question banks, exams, and student responses." />
 
-          <H2>3. Designing the Admin Workspace</H2>
-          <H3>Supporting Lecturers in Managing Assessments</H3>
-          <P>
-            The admin section provides the tools lecturers need to manage
-            the exam content and assessment process. The design covers the
-            question management and exam management workflows requested by
-            the client.
-          </P>
+      <H2>Designing the product as an ecosystem</H2>
+      <P>
+        Once these individual problems were considered together, the
+        broader product model became clearer.
+      </P>
+      <H3>Student journey</H3>
+      <CaseStudyFlow steps={["Discover", "Register", "Participate", "Assess", "Review"]} />
+      <H3>Institute workflow</H3>
+      <CaseStudyFlow steps={["Create", "Organize", "Publish", "Manage"]} />
+      <H3>Assessment workflow</H3>
+      <CaseStudyFlow
+        steps={["Create questions", "Build exams", "Deliver assessments", "Review responses"]}
+      />
+      <P>
+        These aren&rsquo;t separate products. They are different sides of
+        the same ecosystem. The design therefore needed to maintain a
+        consistent structure and interaction language while allowing each
+        user type to focus on their own goals.
+      </P>
 
-          <H3>Core Admin Features</H3>
-          <CaseStudyList>
-            <li>
-              <strong className="font-semibold text-ink">Question management:</strong>{" "}
-              Add new questions and manage existing question content.
-            </li>
-            <li>
-              <strong className="font-semibold text-ink">Question banks:</strong>{" "}
-              Create and organize collections of questions for reuse across
-              exams.
-            </li>
-            <li>
-              <strong className="font-semibold text-ink">Exam management:</strong>{" "}
-              View and manage the exams available in the system.
-            </li>
-            <li>
-              <strong className="font-semibold text-ink">Student answers:</strong>{" "}
-              Access submitted student responses for review.
-            </li>
-          </CaseStudyList>
+      <H2>My contribution</H2>
+      <P>
+        This was a{" "}
+        <strong className="font-semibold text-ink">client-led project</strong>, where I
+        translated a broad set of product requirements into the UX/UI of
+        the platform. My contribution focused on:
+      </P>
+      <CaseStudyList>
+        <li>Turning requirements into connected user journeys</li>
+        <li>Structuring the information architecture</li>
+        <li>Identifying relationships between student and administrative workflows</li>
+        <li>Defining the interaction model across different experiences</li>
+        <li>Designing the student, assessment, and administrative experiences</li>
+        <li>Establishing consistent UI and interaction patterns</li>
+        <li>
+          Making decisions around what information and actions should be
+          prioritized at each stage
+        </li>
+      </CaseStudyList>
+      <P>
+        Rather than simply producing screens from a feature list, I focused
+        on{" "}
+        <strong className="font-semibold text-ink">
+          how the different parts of the platform should work together to
+          support the overall journey.
+        </strong>
+      </P>
 
-          <H3>Design Approach</H3>
-          <P>
-            The admin experience was structured around the relationship
-            between questions, question banks, exams, and student answers.
-            This helps create a clear foundation for managing assessment
-            content as the platform grows.
-          </P>
+      <H2>Outcome</H2>
+      <P>
+        The resulting design established a connected structure across the
+        platform.
+      </P>
+      <H3>For students</H3>
+      <CaseStudyFlow
+        steps={["Discover opportunities", "Register", "Manage activities", "Take assessments", "Review results"]}
+      />
+      <H3>For administrators</H3>
+      <CaseStudyFlow steps={["Create content", "Manage assessments", "Review student responses"]} />
+      <P>
+        This gave each user group a focused experience while keeping their
+        workflows connected through the same underlying platform.
+      </P>
+      <P>
+        The key outcome wasn&rsquo;t simply that the platform contained more
+        features. It was that the different workflows had{" "}
+        <strong className="font-semibold text-ink">a clear relationship to one another</strong>,
+        creating a more coherent experience across the product.
+      </P>
 
-          <ImageSlot caption="The admin workspace — managing questions, question banks, exams, and student answers." />
-
-          <H2>Design Decisions</H2>
-          <H3>Supporting Different User Needs</H3>
-          <P>
-            BrightRoot serves three main audiences: prospective students
-            and visitors, students taking exams, and lecturers managing
-            assessments. Each experience was designed around its primary
-            task rather than treating the platform as one generic
-            interface.
-          </P>
-
-          <H3>Balancing Flexibility and Structure</H3>
-          <P>
-            The exam portal supports different question types and flexible
-            navigation, while the admin section organizes complex content
-            management tasks into distinct areas. The public page provides
-            a simpler, discovery-focused experience.
-          </P>
-
-          <H3>Designing for Future Phases</H3>
-          <P>
-            The first phase of the public platform intentionally excludes
-            authenticated student features. Keeping the public experience
-            focused allows future student-specific features to be
-            introduced without making the initial landing page
-            unnecessarily complex.
-          </P>
-
-          <H2>Reflection</H2>
-          <P>
-            This project gave me the opportunity to design multiple
-            experiences within an education platform, from a public-facing
-            institute page to a structured exam journey and an admin
-            workspace.
-          </P>
-          <P>
-            Working from client requirements, I translated the requested
-            functionality into user flows and interface designs across
-            different user groups. The project also helped me think about
-            how public discovery, student assessments, and administrative
-            workflows can fit together within one product.
-          </P>
-          <P>
-            The main takeaway was understanding how to design a consistent
-            product experience while adapting the interaction patterns to
-            the needs of each user.
-          </P>
+      <H2>Reflection</H2>
+      <P>This project changed the way I think about complex products.</P>
+      <P>
+        When a product contains many features, the solution isn&rsquo;t
+        necessarily to make every feature easier individually. The bigger
+        question is{" "}
+        <strong className="font-semibold text-ink">
+          how those features relate to each other within the user&rsquo;s journey
+        </strong>
+        .
+      </P>
+      <P>
+        For this project, that meant thinking beyond the competition page,
+        the dashboard, the exam, or the admin portal individually. It meant
+        designing the connections between them.
+      </P>
+      <CaseStudyFlow steps={["Discover", "Participate", "Assess", "Review"]} />
+      <P>
+        And ensuring that every part of the experience supported that
+        journey — that became the core of my design approach throughout
+        the project.
+      </P>
     </CaseStudyHero>
   );
 }

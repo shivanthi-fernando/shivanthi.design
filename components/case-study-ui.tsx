@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ImageIcon } from "./icons";
+import { ArrowRight, ImageIcon } from "./icons";
 
 /**
  * Shared prose building blocks for case study pages (Mosaic, BrightRoot,
@@ -34,32 +34,62 @@ export function CaseStudyList({ children }: { children: ReactNode }) {
 }
 
 /**
- * The Role / Project type facts shown at the top of every case study —
- * same two fields everywhere so the format stays identical across
- * projects; only the values change.
+ * The quick-facts row shown at the top of every case study (Role,
+ * Platform, Tools, Scope, ...) — an arbitrary list of label/value pairs
+ * so each project can show as many or as few as make sense, laid out in
+ * a wrapping two-column grid.
  */
 export function CaseStudyFacts({
-  role,
-  projectType,
+  facts,
 }: {
-  role: string;
-  projectType: string;
+  facts: { label: string; value: string }[];
 }) {
   return (
-    <div className="mt-10 grid grid-cols-2 gap-6">
-      <div>
-        <div className="font-label text-xs font-medium tracking-wide text-muted">
-          Role
+    <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8">
+      {facts.map((fact) => (
+        <div key={fact.label}>
+          <div className="font-label text-xs font-medium tracking-wide text-muted">
+            {fact.label}
+          </div>
+          <div className="mt-1 text-base font-medium text-ink">{fact.value}</div>
         </div>
-        <div className="mt-1 text-base font-medium text-ink">{role}</div>
-      </div>
-      <div>
-        <div className="font-label text-xs font-medium tracking-wide text-muted">
-          Project type
-        </div>
-        <div className="mt-1 text-base font-medium text-ink">{projectType}</div>
-      </div>
+      ))}
     </div>
+  );
+}
+
+/**
+ * A short "A → B → C" journey shown as connected chips — used throughout
+ * case studies to make a flow tangible without a full diagram. Wraps
+ * naturally on narrow screens; the arrow always sits between two steps,
+ * never trailing.
+ */
+export function CaseStudyFlow({ steps }: { steps: string[] }) {
+  return (
+    <div className="mt-4 flex flex-wrap items-center gap-2">
+      {steps.map((step, i) => (
+        <span key={step} className="flex items-center gap-2">
+          <span className="rounded-full border border-line-strong bg-card px-3 py-1.5 text-sm font-medium text-ink">
+            {step}
+          </span>
+          {i < steps.length - 1 && (
+            <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted" />
+          )}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * A pulled-out question or statement — used for the framing "design
+ * challenge" question that a case study builds toward answering.
+ */
+export function CaseStudyQuote({ children }: { children: ReactNode }) {
+  return (
+    <blockquote className="mt-6 border-l-2 border-primary py-1 pl-5 font-display text-xl leading-snug text-ink sm:text-2xl">
+      {children}
+    </blockquote>
   );
 }
 

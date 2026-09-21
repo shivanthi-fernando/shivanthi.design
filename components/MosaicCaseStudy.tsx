@@ -22,8 +22,10 @@ export default function MosaicCaseStudy() {
       intro="Redesigning a Norwegian product after uncovering what users and the client actually needed."
     >
       <CaseStudyFacts
-        role="UX/UI Designer"
-        projectType="Client-requested redesign & design system"
+        facts={[
+          { label: "Role", value: "UX/UI Designer" },
+          { label: "Project type", value: "Client-requested redesign & design system" },
+        ]}
       />
 
           <H2>Overview</H2>
