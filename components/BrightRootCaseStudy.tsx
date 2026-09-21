@@ -29,7 +29,7 @@ export default function BrightRootCaseStudy() {
           {
             label: "Scope",
             value:
-              "Student experience · Competition experience · Exam portal · Admin experience",
+              "Student experience · Exam portal · Admin experience",
           },
         ]}
       />

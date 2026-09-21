@@ -43,10 +43,10 @@ export function CaseStudyHero({
 
         {/* Sticky — pinned at the top of the viewport while the content
             panel below (its sibling, much taller) scrolls up over it.
-            aspect-[1728/850] crops in on the source images' own
-            1728/1202 ratio (taller than the earlier half-crop, so more
-            of the screenshot is visible), combined with object-top. */}
-        <div className="sticky top-0 z-0 mt-6 aspect-[1728/850] max-h-[60vh] w-full overflow-hidden rounded-2xl">
+            aspect-[1728/1000] crops in on the source images' own
+            1728/1202 ratio (taller still, so more of the screenshot is
+            visible), combined with object-top. */}
+        <div className="sticky top-0 z-0 mt-6 aspect-[1728/1000] max-h-[70vh] w-full overflow-hidden rounded-2xl">
           <Image
             src={image}
             alt=""
@@ -57,7 +57,9 @@ export function CaseStudyHero({
           />
         </div>
 
-        <div className="relative z-10 -mt-6 rounded-t-[32px] bg-paper pt-10 sm:-mt-8 sm:rounded-t-[40px] sm:pt-14">
+        {/* rounded-t-2xl matches the hero image's own rounded-2xl above it,
+            per feedback that the two should share the same corner radius. */}
+        <div className="relative z-10 -mt-6 rounded-t-2xl bg-paper pt-10 sm:-mt-8 sm:pt-14">
           {/* Left padding here, not on the card itself — the card keeps
               the image's full width, only the text inside it is inset
               from the card's own edge. */}
