@@ -112,7 +112,7 @@ export default function BrightRootCaseStudy() {
           where they are and what needs their attention.
         </strong>
       </P>
-      <ImageSlot caption="The student dashboard — bringing registrations, tasks, and announcements into one place." />
+      <ImageSlot caption="The student dashboard, bringing registrations, tasks, and announcements into one place." />
 
       <H2>Design challenge 02: Competition registration involved multiple decisions</H2>
       <P>
@@ -120,8 +120,8 @@ export default function BrightRootCaseStudy() {
         action.
       </P>
       <P>
-        Students could participate at different levels — District, State,
-        Country, or Global — and each level had a different price.
+        Students could participate at different levels: District, State,
+        Country, or Global, and each level had a different price.
       </P>
       <P>
         If those decisions were pushed too late into the registration
@@ -203,7 +203,7 @@ export default function BrightRootCaseStudy() {
         deliberate transition from &ldquo;getting ready&rdquo; to
         &ldquo;taking the exam.&rdquo;
       </P>
-      <ImageSlot caption="The exam experience — system check, question answering, and submission review." />
+      <ImageSlot caption="The exam experience, covering system check, question answering, and submission review." />
 
       <H2>Design challenge 05: Different question types shouldn&rsquo;t create different experiences</H2>
       <P>The assessment needed to support multiple interaction types:</P>
@@ -252,7 +252,7 @@ export default function BrightRootCaseStudy() {
         information, giving students a clear understanding of what happened
         after the assessment.
       </P>
-      <ImageSlot caption="Results, answer sheet, and leaderboard — closing the loop after submission." />
+      <ImageSlot caption="Results, answer sheet, and leaderboard, closing the loop after submission." />
 
       <H2>Design challenge 07: Administrative workflows power the student experience</H2>
       <P>
@@ -278,7 +278,7 @@ export default function BrightRootCaseStudy() {
         helped ensure that the workflows supporting the student experience
         were logically connected.
       </P>
-      <ImageSlot caption="The admin workspace — questions, question banks, exams, and student responses." />
+      <ImageSlot caption="The admin workspace, covering questions, question banks, exams, and student responses." />
 
       <H2>Designing the product as an ecosystem</H2>
       <P>
@@ -369,8 +369,8 @@ export default function BrightRootCaseStudy() {
       <CaseStudyFlow steps={["Discover", "Participate", "Assess", "Review"]} />
       <P>
         And ensuring that every part of the experience supported that
-        journey — that became the core of my design approach throughout
-        the project.
+        journey. That became the core of my design approach throughout the
+        project.
       </P>
     </CaseStudyHero>
   );
