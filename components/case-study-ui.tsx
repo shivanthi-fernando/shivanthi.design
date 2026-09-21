@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { ArrowRight, ImageIcon } from "./icons";
 
@@ -96,18 +97,38 @@ export function CaseStudyQuote({ children }: { children: ReactNode }) {
 }
 
 /**
- * A dashed-border slot marking where a real screenshot goes once it's
- * ready to share — keeps the case study's structure/captions in place
- * without blocking on assets that don't exist yet. Drop a real <Image>
- * in here and delete the placeholder when the screenshot is available.
+ * A screenshot slot — pass `src` once a real screenshot is ready to
+ * share (rendered at the site's standard 1728/1202 screenshot ratio);
+ * without one, falls back to a dashed-border "coming soon" placeholder
+ * so the case study's structure/captions stay in place either way.
  */
-export function CaseStudyImageSlot({ caption }: { caption: string }) {
+export function CaseStudyImageSlot({
+  caption,
+  src,
+  alt = "",
+}: {
+  caption: string;
+  src?: string;
+  alt?: string;
+}) {
   return (
     <figure className="mt-8">
-      <div className="flex aspect-[16/10] flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line-strong bg-card p-6 text-center text-muted">
-        <ImageIcon className="h-8 w-8" />
-        <span className="text-sm">Image coming soon</span>
-      </div>
+      {src ? (
+        <div className="relative aspect-[1728/1202] overflow-hidden rounded-2xl border border-line bg-card">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="(min-width: 1024px) 672px, 90vw"
+            className="object-cover object-top"
+          />
+        </div>
+      ) : (
+        <div className="flex aspect-[16/10] flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line-strong bg-card p-6 text-center text-muted">
+          <ImageIcon className="h-8 w-8" />
+          <span className="text-sm">Image coming soon</span>
+        </div>
+      )}
       <figcaption className="mt-3 text-sm italic leading-relaxed text-muted">
         {caption}
       </figcaption>

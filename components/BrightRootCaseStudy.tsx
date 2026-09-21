@@ -52,7 +52,14 @@ export default function BrightRootCaseStudy() {
         the institute&rsquo;s business model while keeping the student
         journey clear and easy to navigate.
       </P>
-      <ImageSlot caption="Competition discovery page showing upcoming competitions and events." />
+      <ImageSlot
+        src="/projects/BrightRoot/BR_CaseStudy_1.png"
+        caption="The institute homepage, where students discover upcoming competitions and events."
+      />
+      <ImageSlot
+        src="/projects/BrightRoot/BR_CaseStudy_2.png"
+        caption="A competition's detail page, showing the exam information and participation levels with pricing."
+      />
 
       <H2>Understanding the problem</H2>
       <P>
