@@ -61,7 +61,12 @@ export function CaseStudyHero({
               the image's full width, only the text inside it is inset
               from the card's own edge. */}
           <div className="pl-4 sm:pl-8">
-            <SectionHead label={label} title={title} intro={intro} />
+            <SectionHead
+              label={label}
+              title={title}
+              intro={intro}
+              titleClassName="text-xl sm:text-2xl md:text-3xl"
+            />
 
             <div className="max-w-2xl">{children}</div>
           </div>

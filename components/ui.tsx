@@ -132,18 +132,22 @@ export function SectionHead({
   title,
   intro,
   align = "left",
+  titleClassName = "text-2xl sm:text-3xl md:text-4xl",
 }: {
   label: string;
   title: ReactNode;
   intro?: ReactNode;
   align?: "left" | "center";
+  /** Overrides just the title's size classes — everything else (weight,
+   *  line-height) stays the same regardless. */
+  titleClassName?: string;
 }) {
   return (
     <div
       aria-label={label}
       className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}
     >
-      <h2 className="text-2xl font-semibold leading-[1.1] sm:text-3xl md:text-4xl">
+      <h2 className={`font-semibold leading-[1.1] ${titleClassName}`}>
         {title}
       </h2>
       {intro && <p className="mt-4 text-lg leading-relaxed text-muted">{intro}</p>}
