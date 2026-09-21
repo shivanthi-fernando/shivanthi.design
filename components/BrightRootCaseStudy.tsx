@@ -6,7 +6,6 @@ import {
   CaseStudyList,
   CaseStudyFacts,
   CaseStudyFlow,
-  CaseStudyQuote,
   CaseStudyImageSlot as ImageSlot,
 } from "./case-study-ui";
 
@@ -16,7 +15,7 @@ export default function BrightRootCaseStudy() {
       image="/projects/BrightRoot/BrightRoot_Thumbnail.png"
       label="BrightRoot"
       title="Turned fragmented education workflows into one connected experience"
-      intro="An education platform designed to bring institute activities, student participation, assessments, and administrative workflows into one connected experience."
+      intro="Education experiences are often spread across different systems, making it harder for students to manage their activities and for institutes to manage the workflows behind them. The client wanted to solve this by creating a single platform that connected the student journey with the institute&rsquo;s administrative workflows."
     >
       <CaseStudyFacts
         facts={[
@@ -30,40 +29,23 @@ export default function BrightRootCaseStudy() {
         ]}
       />
 
-      <H2>Context</H2>
-      <P>
-        As institutes expand beyond traditional classroom learning, students
-        interact with many different parts of the education experience —
-        discovering competitions and events, registering for activities,
-        managing their schedules, completing assessments, and accessing
-        results. Behind these experiences, institute teams also need to
-        manage questions, exams, student responses, and other academic
-        content. The client wanted to address this by creating a single
-        platform that could bring these student and administrative needs
-        together.
-      </P>
-
       <H2>Problem</H2>
       <P>
-        The client came with a broad set of requirements covering institute
-        information, competitions, events, student activities, online exams,
-        and assessment management. The challenge was not simply to provide
-        all of these features, but to make them feel like{" "}
-        <strong className="font-semibold text-ink">one coherent experience</strong>.
+        The client needed a platform that could bring disconnected education
+        workflows into one coherent experience. Students needed a clear way
+        to discover opportunities, participate in activities, manage their
+        journey, and complete assessments, while administrators needed a
+        structured way to manage the content and processes behind those
+        experiences.
       </P>
       <P>
-        Students needed to move naturally from discovering an opportunity to
-        participating in it, while registered students needed a central
-        place to understand what required their attention. At the same
-        time, administrators needed efficient ways to manage the content
-        that powered these experiences.
+        The challenge was to{" "}
+        <strong className="font-semibold text-ink">
+          design a connected experience across these different workflows
+          without making the product feel like a collection of separate
+          tools.
+        </strong>
       </P>
-      <P>The design challenge became:</P>
-      <CaseStudyQuote>
-        How might I turn a broad set of disconnected education workflows
-        into a clear, connected experience for students and institute
-        teams?
-      </CaseStudyQuote>
 
       <H2>Understanding the problem</H2>
       <P>
