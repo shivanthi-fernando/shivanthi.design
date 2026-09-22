@@ -6,11 +6,16 @@ import { ArrowRight, ImageIcon } from "./icons";
  * Shared prose building blocks for case study pages (Mosaic, BrightRoot,
  * and future ones) — keeps heading rhythm, body copy, and the
  * "screenshot not ready yet" placeholder consistent across all of them.
+ *
+ * Each of these carries its own max-w-2xl reading-width cap (rather
+ * than a single wrapper capping every child in CaseStudyHero) so that
+ * CaseStudyImageSlot, below, can opt out of it and span the card's
+ * full width instead.
  */
 
 export function CaseStudyH2({ children }: { children: ReactNode }) {
   return (
-    <h2 className="mt-14 font-display text-xl font-semibold text-ink sm:text-2xl">
+    <h2 className="mt-14 max-w-2xl font-display text-xl font-semibold text-ink sm:text-2xl">
       {children}
     </h2>
   );
@@ -18,17 +23,19 @@ export function CaseStudyH2({ children }: { children: ReactNode }) {
 
 export function CaseStudyH3({ children }: { children: ReactNode }) {
   return (
-    <h3 className="mt-8 font-display text-lg font-semibold text-ink">{children}</h3>
+    <h3 className="mt-8 max-w-2xl font-display text-lg font-semibold text-ink">
+      {children}
+    </h3>
   );
 }
 
 export function CaseStudyP({ children }: { children: ReactNode }) {
-  return <p className="mt-4 text-lg leading-relaxed text-muted">{children}</p>;
+  return <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{children}</p>;
 }
 
 export function CaseStudyList({ children }: { children: ReactNode }) {
   return (
-    <ul className="mt-4 list-disc space-y-2 pl-5 text-lg leading-relaxed text-muted">
+    <ul className="mt-4 max-w-2xl list-disc space-y-2 pl-5 text-lg leading-relaxed text-muted">
       {children}
     </ul>
   );
@@ -48,7 +55,7 @@ export function CaseStudyFacts({
   facts: { label: string; value: string }[];
 }) {
   return (
-    <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line">
+    <div className="mt-10 grid max-w-2xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line">
       {facts.map((fact) => (
         <div key={fact.label} className="bg-card p-4">
           <div className="font-label text-xs font-medium tracking-wide text-muted">
@@ -69,7 +76,7 @@ export function CaseStudyFacts({
  */
 export function CaseStudyFlow({ steps }: { steps: string[] }) {
   return (
-    <div className="mt-4 flex flex-wrap items-center gap-2">
+    <div className="mt-4 flex max-w-2xl flex-wrap items-center gap-2">
       {steps.map((step, i) => (
         <span key={step} className="flex items-center gap-2">
           <span className="rounded-lg border border-line-strong bg-card px-3.5 py-2 text-sm font-medium text-ink">
@@ -90,7 +97,7 @@ export function CaseStudyFlow({ steps }: { steps: string[] }) {
  */
 export function CaseStudyQuote({ children }: { children: ReactNode }) {
   return (
-    <blockquote className="mt-6 border-l-2 border-primary py-1 pl-5 font-display text-xl leading-snug text-ink sm:text-2xl">
+    <blockquote className="mt-6 max-w-2xl border-l-2 border-primary py-1 pl-5 font-display text-xl leading-snug text-ink sm:text-2xl">
       {children}
     </blockquote>
   );
@@ -101,6 +108,15 @@ export function CaseStudyQuote({ children }: { children: ReactNode }) {
  * share (rendered at the site's standard 1728/1202 screenshot ratio);
  * without one, falls back to a dashed-border "coming soon" placeholder
  * so the case study's structure/captions stay in place either way.
+ *
+ * Unlike the text primitives above, this one does NOT carry max-w-2xl
+ * — it fills the card's full width instead (matching the hero image
+ * above it exactly). Its immediate parent only has left padding
+ * (pl-4/sm:pl-8, see CaseStudyHero — text is inset from the card's own
+ * edge, but the card itself stays the image's full width), so
+ * -ml-4/sm:-ml-8 cancels exactly that inset and the matching
+ * w-[calc(...)] widens by the same amount, reaching the card's true
+ * right edge too.
  */
 export function CaseStudyImageSlot({
   caption,
@@ -112,14 +128,14 @@ export function CaseStudyImageSlot({
   alt?: string;
 }) {
   return (
-    <figure className="mt-8">
+    <figure className="-ml-4 mt-8 w-[calc(100%+1rem)] sm:-ml-8 sm:w-[calc(100%+2rem)]">
       {src ? (
         <div className="relative aspect-[1728/1202] overflow-hidden rounded-2xl border border-line bg-card">
           <Image
             src={src}
             alt={alt}
             fill
-            sizes="(min-width: 1024px) 672px, 90vw"
+            sizes="(min-width: 1024px) 960px, 90vw"
             className="object-cover object-top"
           />
         </div>

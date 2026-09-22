@@ -134,7 +134,7 @@ export default function MosaicCaseStudy() {
             cohesive direction while reducing unnecessary variation in the
             existing interface.
           </P>
-          <div className="mt-4 flex flex-wrap gap-4">
+          <div className="mt-4 flex max-w-2xl flex-wrap gap-4">
             {palette.map((c) => (
               <div
                 key={c.hex}

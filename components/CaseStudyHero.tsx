@@ -62,7 +62,10 @@ export function CaseStudyHero({
         <div className="relative z-10 -mt-6 rounded-t-2xl bg-paper pt-10 sm:-mt-8 sm:pt-14">
           {/* Left padding here, not on the card itself — the card keeps
               the image's full width, only the text inside it is inset
-              from the card's own edge. */}
+              from the card's own edge. Prose children each carry their
+              own max-w-2xl (see case-study-ui.tsx) rather than this div
+              capping all of them, so CaseStudyImageSlot can opt out and
+              span the card's full width instead of the text column. */}
           <div className="pl-4 sm:pl-8">
             <SectionHead
               label={label}
@@ -71,7 +74,7 @@ export function CaseStudyHero({
               titleClassName="text-xl sm:text-2xl md:text-3xl"
             />
 
-            <div className="max-w-2xl">{children}</div>
+            {children}
           </div>
         </div>
       </div>
