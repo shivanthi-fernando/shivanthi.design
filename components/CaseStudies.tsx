@@ -28,24 +28,24 @@ const caseStudies: {
   href: string | null;
   disabled?: boolean;
 }[] = [
-  {
-    heading: "Turned fragmented education workflows into one connected experience",
-    name: "BrightRoot",
-    categories: ["Landing page and SaaS design", "Education"],
-    image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
-    href: "/projects/brightroot",
-    disabled: true,
-  },
-  {
-    heading:
-      "Redesigned a Norwegian product after uncovering what users and the client actually needed.",
-    name: "Mosaic",
-    categories: ["Design system", "Web application", "Legal"],
-    image: "/projects/Mosaic/Mosaic_Thumbnail.png",
-    href: "/projects/mosaic",
-    disabled: true,
-  },
-];
+    {
+      heading: "Turned fragmented education workflows into one connected experience",
+      name: "BrightRoot",
+      categories: ["Landing page and SaaS design", "Education"],
+      image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
+      href: "/projects/brightroot",
+      disabled: true,
+    },
+    {
+      heading:
+        "Redesigned a Norwegian product after uncovering what users and the client actually needed",
+      name: "Mosaic",
+      categories: ["Design system", "Web application", "Legal"],
+      image: "/projects/Mosaic/Mosaic_Thumbnail.png",
+      href: "/projects/mosaic",
+      disabled: true,
+    },
+  ];
 
 export default function CaseStudies() {
   return (
@@ -59,11 +59,10 @@ export default function CaseStudies() {
       <div className="mt-6 grid gap-8">
         {caseStudies.map((cs, i) => {
           const isLive = Boolean(cs.href) && !cs.disabled;
-          const cardClass = `block overflow-hidden rounded-[20px] border border-neutral-200 bg-card ${
-            isLive
+          const cardClass = `block overflow-hidden rounded-[20px] border border-neutral-200 bg-card ${isLive
               ? "group transition-all duration-300 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-[0_24px_44px_-28px_rgba(26,25,23,0.35)]"
               : ""
-          }`;
+            }`;
 
           const content = (
             <div className="flex flex-col-reverse sm:flex-row sm:items-stretch">
