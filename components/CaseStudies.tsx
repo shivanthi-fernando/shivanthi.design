@@ -40,6 +40,7 @@ const caseStudies: {
     heading:
       "Redesigned a Norwegian product after uncovering what users and the client actually needed.",
     name: "Mosaic",
+    categories: ["Design system", "Web application", "Legal"],
     image: "/projects/Mosaic/Mosaic_Thumbnail.png",
     href: "/projects/mosaic",
     disabled: true,
