@@ -34,6 +34,7 @@ const caseStudies: {
     categories: ["Landing page and SaaS design", "Education"],
     image: "/projects/BrightRoot/BrightRoot_Thumbnail.png",
     href: "/projects/brightroot",
+    disabled: true,
   },
   {
     heading:
@@ -41,6 +42,7 @@ const caseStudies: {
     name: "Mosaic",
     image: "/projects/Mosaic/Mosaic_Thumbnail.png",
     href: "/projects/mosaic",
+    disabled: true,
   },
 ];
 
@@ -82,10 +84,16 @@ export default function CaseStudies() {
                     ))}
                   </div>
                 )}
-                <span className="mt-4 inline-flex w-fit items-center gap-1.5 border-b-2 border-line-strong pb-0.5 text-sm font-medium text-ink transition-colors group-hover:border-primary sm:mt-auto">
-                  Read case study
-                  <ArrowUpRight className="h-4 w-4 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </span>
+                {isLive ? (
+                  <span className="mt-4 inline-flex w-fit items-center gap-1.5 border-b-2 border-line-strong pb-0.5 text-sm font-medium text-ink transition-colors group-hover:border-primary sm:mt-auto">
+                    Read case study
+                    <ArrowUpRight className="h-4 w-4 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </span>
+                ) : (
+                  <span className="mt-4 inline-flex w-fit items-center rounded-full bg-neutral-100 px-2.5 py-1 text-xs font-medium text-muted sm:mt-auto">
+                    Coming soon
+                  </span>
+                )}
               </div>
 
               {/* Thumbnail — no border of its own, flush against the
